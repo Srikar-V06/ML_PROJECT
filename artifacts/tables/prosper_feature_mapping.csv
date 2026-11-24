@@ -1,0 +1,18 @@
+lc_feature,prosper_feature,multiplier,definition
+loan_amnt,LoanOriginalAmount,1.0,Original principal in USD
+term,Term,1.0,Contract months
+int_rate,BorrowerRate,100.0,Nominal rate in percentage points
+annual_inc,StatedMonthlyIncome,12.0,Annualized stated income in USD
+dti,DebtToIncomeRatio,100.0,Percentage points; underwriting definitions can differ
+fico_range_low,CreditScoreRangeLower,1.0,Lower bureau score band; score vendors may differ
+inq_last_6mths,InquiriesLast6Months,1.0,Recent credit inquiries
+open_acc,OpenCreditLines,1.0,Open credit lines
+acc_now_delinq,CurrentDelinquencies,1.0,Active bureau delinquencies at listing
+delinq_amnt,AmountDelinquent,1.0,Outstanding delinquent bureau balance in USD
+revol_bal,RevolvingCreditBalance,1.0,Revolving credit balance in USD
+revol_util,BankcardUtilization,100.0,Bankcard utilization proxy in percentage points
+emp_length,EmploymentStatusDuration,0.08333333333333333,Months in employment status converted to years; tenure proxy
+addr_state,BorrowerState,,State code
+home_ownership,IsBorrowerHomeowner,,Boolean owner flag; collapse LC OWN and MORTGAGE for transfer
+grade,ProsperRating (Alpha),,Platform-native rating with earlier CreditGrade fallback; scales differ
+earliest_cr_line,FirstRecordedCreditLine,,First recorded credit line date

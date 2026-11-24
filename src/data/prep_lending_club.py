@@ -112,7 +112,8 @@ def run(cfg):
     footers = 0
     for chunk in pd.read_csv(source, usecols=KEYS, dtype={"id": "string", "member_id": "string"},
                              chunksize=60000, low_memory=False):
-        footer = chunk.id.str.startswith("Total amount funded", na=False) & chunk.loan_status.isna()
+        footer = chunk.id.str.startswith(("Total amount funded", "Loans that do not meet the credit policy"),
+                                         na=False) & chunk.loan_status.isna() & chunk.issue_d.isna()
         footers += int(footer.sum())
         frames.append(parse(chunk.loc[~footer].copy()))
     full = pd.concat(frames, ignore_index=True)

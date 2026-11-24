@@ -1,0 +1,24 @@
+{
+  "raw_rows": 2260668,
+  "csv_footer_records": 33,
+  "member_ids_present": 0,
+  "duplicate_members_removed": 0,
+  "status_counts": {
+    "Fully Paid": 1076751,
+    "Current": 878317,
+    "Charged Off": 268559,
+    "Late (31-120 days)": 21467,
+    "In Grace Period": 8436,
+    "Late (16-30 days)": 4349,
+    "Does not meet the credit policy. Status:Fully Paid": 1988,
+    "Does not meet the credit policy. Status:Charged Off": 761,
+    "Default": 40
+  },
+  "cutoff": "2016Q1",
+  "immature_terminal_removed": 406810,
+  "mature_rows": 938540,
+  "sampled_rows": 200000,
+  "rare_stratum_rows": 8,
+  "source_sha256": "55c16f75120f897683f02e7aabcf080d0e4a20c4832feb1d592cfa941bd62a2d",
+  "raw_columns": 151
+}
