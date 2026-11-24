@@ -1,0 +1,23 @@
+seed: 42
+sample_size: 200000
+maturity_threshold: 0.90
+split_fractions: [0.70, 0.15, 0.15]
+cv_folds: 4
+cost_ratios: [5.0, 10.0, 15.0]
+bootstrap_iterations: 1000
+auc_allowlist: []
+target: {Fully Paid: 0, Charged Off: 1, Default: 1}
+prosper_target: {Completed: 0, Defaulted: 1, Chargedoff: 1}
+paths:
+  lending_club: data/raw/accepted_2007_to_2018Q4.csv.gz
+  dictionary: data/raw/LCDataDictionary.xlsx
+  prosper: data/raw/prosperLoanData.csv
+  sample: data/processed/lending_club_200k.parquet
+  diagnostics: data/processed/audit_only.parquet
+  prosper_common: data/processed/prosper_common.parquet
+  splits: splits
+  artifacts: artifacts
+  docs: docs
+sources:
+  dictionary: https://bigblue.depaul.edu/jlee141/econdata/LendingClub_LoanData/LC_DataDictionary.xlsx
+  prosper: https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prosperLoanData.csv
