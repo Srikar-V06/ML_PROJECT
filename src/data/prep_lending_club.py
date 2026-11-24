@@ -46,9 +46,10 @@ def stratify(pool, n, seed):
     strata = pool[["quarter", "grade", "target"]].copy()
     sizes = strata.groupby(list(strata), dropna=False).target.transform("size")
     rare = sizes < 2
-    # Pool rare grades with the largest grade of the same quarter and outcome.
-    common = strata.groupby(["quarter", "target"]).grade.transform(lambda g: g.mode().iloc[0])
-    strata.loc[rare, "grade"] = common[rare]
+    # Drop grade in the affected quarter/outcome cells. This lets a singleton
+    # participate in a random draw from its full fallback stratum.
+    fallback = rare.groupby([strata.quarter, strata.target]).transform("any")
+    strata.loc[fallback, "grade"] = "<all grades>"
     strata["year"] = pool.issue_d.dt.year
     yr = strata.groupby("year").size()
     yearly = allocate(yr, n)
