@@ -1,5 +1,7 @@
 """Two streaming reads. The first establishes the population and the second retrieves sampled IDs."""
+import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import matplotlib
 matplotlib.use("Agg")
@@ -172,7 +174,14 @@ def run(cfg):
     data["target"] = data.loan_status.map(cfg["target"]).astype("int8")
     for path in ("sample", "diagnostics"):
         Path(cfg["paths"][path]).parent.mkdir(parents=True, exist_ok=True)
-    data[["id", "issue_d", "target", *clean]].to_parquet(cfg["paths"]["sample"], index=False)
+    path = Path(cfg["paths"]["sample"])
+    manifest = Path(cfg["paths"]["splits"]) / "manifest.json"
+    with TemporaryDirectory(dir=path.parent) as tmp:
+        candidate = Path(tmp) / path.name
+        data[["id", "issue_d", "target", *clean]].to_parquet(candidate, index=False)
+        if manifest.exists() and digest(candidate) != json.loads(manifest.read_text())["sample_sha256"]:
+            raise ValueError("New sample differs from frozen manifest. Use versioned output paths.")
+        candidate.replace(path)
     data[["id", *[c for c in cols if c not in clean and c not in ("id", "issue_d")]]].to_parquet(
         cfg["paths"]["diagnostics"], index=False)
     log(cfg, "lending_club", len(data), len(clean), **stats)

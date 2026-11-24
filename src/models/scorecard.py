@@ -16,6 +16,7 @@ class Binner:
     def fit(self, x, y):
         self.numeric = pd.api.types.is_numeric_dtype(x)
         self.optimal = None
+        self.fallback_reason = ""
         observed = x.notna()
         self.backend = "monotonic_quantile" if self.numeric else "pooled_categories"
         if observed.any() and x[observed].nunique() > 1:
@@ -28,7 +29,9 @@ class Binner:
                     raise ValueError(self.optimal.status)
                 self.bins(x)
                 self.backend = "optbinning"
-            except (ImportError, ValueError, RuntimeError, TypeError, ArithmeticError):
+            except Exception as exc:
+                # Optional solver failures are column-local. Keep the reason in the IV ledger.
+                self.fallback_reason = type(exc).__name__
                 self.optimal = None
         if self.optimal is None:
             if self.numeric:
@@ -74,7 +77,8 @@ class Scorecard:
 
     def fit(self, X, y):
         self.binners = {col: Binner().fit(X[col], y) for col in X}
-        summary = pd.DataFrame([dict(feature=c, iv=b.iv, backend=b.backend, selected=b.iv >= .02)
+        summary = pd.DataFrame([dict(feature=c, iv=b.iv, backend=b.backend,
+                                     fallback_reason=b.fallback_reason, selected=b.iv >= .02)
                                 for c, b in self.binners.items()]).sort_values("iv", ascending=False)
         summary.to_csv(artifact(self.cfg, "tables/woe_iv_summary.csv"), index=False)
         self.features = summary.loc[summary.selected, "feature"].tolist()

@@ -10,4 +10,14 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Verify size of tracked tables
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          names = subprocess.check_output(["git", "ls-files", "-z", "*.csv", "*.parquet"]).split(b"\0")
+          large = [p for name in names if name and (p := Path(name.decode())).stat().st_size > 10_000_000]
+          if large:
+              raise SystemExit(f"Tracked data exceeds 10 MB: {large}")
+          PY
       - run: pytest -v
