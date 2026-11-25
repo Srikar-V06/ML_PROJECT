@@ -13,7 +13,7 @@ def register_model(name):
 
 
 def list_models():
-    for module in ("src.models.baselines", "src.models.scorecard"):
+    for module in ("src.models.baselines", "src.models.scorecard", "src.models.block2"):
         import_module(module)
     return sorted(_MODELS)
 

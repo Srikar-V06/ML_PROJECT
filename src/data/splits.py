@@ -47,7 +47,7 @@ def save_frozen(root, name, frame, manifest):
     manifest["sha256"][name] = digest(path)
 
 
-def load(cfg):
+def load(cfg, names=None):
     root = Path(cfg["paths"]["splits"])
     manifest = json.loads((root / "manifest.json").read_text())
     if digest(cfg["paths"]["sample"]) != manifest["sample_sha256"]:
@@ -57,7 +57,7 @@ def load(cfg):
             raise ValueError(f"Split checksum mismatch: {name}")
     data = pd.read_parquet(cfg["paths"]["sample"]).set_index("id", verify_integrity=True)
     return {name: data.loc[pd.read_parquet(root / info["file"]).id]
-            for name, info in manifest["splits"].items()}
+            for name, info in manifest["splits"].items() if names is None or name in names}
 
 
 if __name__ == "__main__":

@@ -31,3 +31,7 @@ The companion files used for the reference run are identified below.
 | --- | --- |
 | [Lending Club dictionary archived at DePaul](https://bigblue.depaul.edu/jlee141/econdata/LendingClub_LoanData/LC_DataDictionary.xlsx) | `3cf0ac7ac903238ea6e7ee1eb42b28c5409f66ff6c4fe9b3004c7d649a145f0a` |
 | [Historical Prosper export hosted by Udacity](https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prosperLoanData.csv) | `71c1c1931f65bc4d2e3a8f3603d865e074e327b2271590f3a06829197b9cce0f` |
+
+## Block 2 handoff to P3
+
+The P2 runner tunes models inside the frozen Train folds and writes validation predictions in P1's loan-ID format. Its production input is the clean parquet whose SHA-256 appears in the frozen manifest. The repository fixture exercises the workflow on synthetic loans. For the commands, preprocessing choices, artifact paths and instructions for loading a fitted pipeline, see the [Block 2 guide](docs/block2.md).
