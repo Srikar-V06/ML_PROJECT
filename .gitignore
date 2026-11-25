@@ -12,3 +12,5 @@ artifacts/predictions/
 !tests/fixtures/*.csv
 !splits/*.parquet
 *.tmp
+artifacts/block2/models/
+artifacts/block2/*.sqlite3*
