@@ -1,0 +1,28 @@
+{
+  "timestamp": "20261126T125234Z",
+  "champion": "stack_lr",
+  "test_rows": 45000,
+  "test_default_rate": 0.1990888888888889,
+  "bootstrap_iterations": 1000,
+  "models_evaluated": 26,
+  "top3_test_by_pr_auc": [
+    {
+      "model": "catboost_imb_class_weights",
+      "roc_auc": 0.7441593652754721,
+      "pr_auc": 0.42792165926032294,
+      "brier": 0.2012935450504327
+    },
+    {
+      "model": "stack_lr",
+      "roc_auc": 0.7439228305794123,
+      "pr_auc": 0.42790344189170776,
+      "brier": 0.13862109915885296
+    },
+    {
+      "model": "catboost",
+      "roc_auc": 0.744161427888992,
+      "pr_auc": 0.4275855377132962,
+      "brier": 0.13952848787621666
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+[F2] constant                     train=   0.00s (n=3) infer=   0.03ms/1k size=0.001MB rss=1215MB
+[F2] grade_only                   train=   1.15s (n=3) infer=   1.28ms/1k size=0.002MB rss=1277MB
+[F2] logreg_baseline              train=   4.18s (n=3) infer=   5.69ms/1k size=0.005MB rss=1341MB
+[F2] woe_scorecard                train=  82.92s (n=3) infer= 129.79ms/1k size=0.008MB rss=1261MB
+[F2] decision_tree                train=   2.33s (n=3) infer=   6.00ms/1k size=0.004MB rss=1635MB
+[F2] random_forest                train=   4.74s (n=3) infer=  10.61ms/1k size=0.622MB rss=1902MB
+[F2] pca_lr_95                    train=   0.35s (n=3) infer=   7.11ms/1k size=0.045MB rss=1287MB
+[F2] pca_random_forest_99         train=   1.92s (n=3) infer=  11.60ms/1k size=0.318MB rss=1167MB
+[F2] pca_lightgbm_80              train=   0.93s (n=3) infer=  10.21ms/1k size=0.178MB rss=1180MB
+[F2] xgb_hist                     train=  13.44s (n=3) infer=  12.57ms/1k size=0.396MB rss=1856MB
+[F2] catboost                     train= 126.65s (n=1) infer=  19.44ms/1k size=1.552MB rss=1836MB
+[F2] lgbm_native_flags            train=  14.80s (n=3) infer=  47.86ms/1k size=0.785MB rss=1540MB
+[F2] lgbm_native                  train=  13.77s (n=3) infer=  44.99ms/1k size=0.734MB rss=1927MB
+[F2] lgbm_imputed_flags           train=  12.75s (n=3) infer=  40.35ms/1k size=0.600MB rss=1734MB
+[F2] hgb                          train=  16.98s (n=3) infer=  16.34ms/1k size=0.250MB rss=2131MB
+[F2] gb_classic                   train=  77.60s (n=1) infer=  12.39ms/1k size=0.392MB rss=1509MB
+[F2] adaboost                     train= 160.87s (n=1) infer=  48.92ms/1k size=0.048MB rss=1608MB
+[F2] xgboost_imb_class_weights    train=  12.71s (n=3) infer=  12.28ms/1k size=0.370MB rss=1780MB
+[F2] xgboost_imb_undersample      train=   5.67s (n=3) infer=  12.54ms/1k size=0.531MB rss=1830MB
+[F2] xgboost_imb_smote            train=  68.44s (n=1) infer=  14.86ms/1k size=5.351MB rss=1757MB
+[F2] catboost_imb_class_weights   train= 129.82s (n=1) infer=  19.55ms/1k size=2.037MB rss=2434MB
+[F2] catboost_imb_undersample     train=  28.52s (n=1) infer=  19.25ms/1k size=1.220MB rss=2220MB
+[F2] catboost_imb_smote           train= 265.70s (n=1) infer= 236.48ms/1k size=6.584MB rss=1641MB
+[F2] lgbm_monotone                train=  12.13s (n=3) infer=  39.50ms/1k size=0.595MB rss=1904MB
+[F2] avg_top3                     train=   0.00s (n=3) infer=  39.92ms/1k size=1.953MB rss=216MB
+[F2] stack_lr                     train= 635.30s (n=1) infer=  42.08ms/1k size=1.953MB rss=301MB
+[F2] Saved artifacts/p3/tables/efficiency.csv (26 models)

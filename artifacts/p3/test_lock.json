@@ -1,0 +1,7 @@
+{
+  "locked_at": "2026-11-26T12:50:53.826888+00:00",
+  "git_sha": "017c04e8e5d72da2d595a89e59ae57e4c1b1b270",
+  "manifest_path": "artifacts/p3/model_manifest.json",
+  "manifest_sha256": "f40aa9b710fcfecf8cce15f100f50c5609e31fae258f38b2339c89c00e377519",
+  "model_count": 26
+}
