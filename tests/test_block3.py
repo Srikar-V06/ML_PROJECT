@@ -210,3 +210,24 @@ def test_dual_export_and_test_lock_guard(fixture_run, tmp_path):
     paths["p3_model"].write_bytes(b"tampered")
     with pytest.raises(ValueError, match="SHA-256 mismatch"):
         verify_manifest_and_acquire_test_lock(manifest_path, lock_path, expected_feature_order=cols)
+
+
+def test_frozen_manifest_and_lock_integrity():
+    from pathlib import Path
+    from src.utils.io import digest
+
+    manifest_path = Path("artifacts/p3/model_manifest.json")
+    lock_path = Path("artifacts/p3/test_lock.json")
+    assert manifest_path.exists() and lock_path.exists()
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert len(manifest["models"]) == 26
+    assert manifest["champion"] == "stack_lr"
+    for name, info in manifest["models"].items():
+        m_file = Path(info["path"])
+        assert m_file.exists(), f"Missing frozen model: {m_file}"
+        assert digest(m_file) == info["sha256"], f"SHA-256 mismatch for {name}"
+
+    with pytest.raises(RuntimeError, match="Test lock already exists"):
+        verify_manifest_and_acquire_test_lock(manifest_path, lock_path, expected_feature_order=manifest["feature_order"])
+

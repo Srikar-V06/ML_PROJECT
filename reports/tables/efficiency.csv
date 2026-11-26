@@ -1,0 +1,27 @@
+model,block,family,fit_rows,subsample_label,train_seconds,n_train_runs,train_timing_note,infer_ms_per_1000,model_bytes,model_mb,train_tracemalloc_mb,train_rss_mb,infer_tracemalloc_mb,infer_rss_mb,n_trees,total_leaves,max_depth,n_params
+constant,P1,baseline,210000,full_210k,0.003,3,median of 3 refits (4 threads),0.033,934,0.0009,5.62,1215.36,0.07,185.34,,,,1.0
+grade_only,P1,baseline,210000,full_210k,1.145,3,median of 3 refits (4 threads),1.284,2310,0.0022,20.78,1276.86,0.128,185.75,,,,43.0
+logreg_baseline,P1,linear,210000,full_210k,4.185,3,median of 3 refits (4 threads),5.694,5321,0.0051,422.988,1341.34,2.044,191.33,,,,134.0
+woe_scorecard,P1,scorecard,210000,full_210k,82.915,3,median of 3 refits (4 threads),129.795,8771,0.0084,80.92,1260.84,0.43,188.36,,,,1.0
+decision_tree,P2,tree,210000,full_210k,2.331,3,median of 3 refits (4 threads),5.997,3715,0.0035,606.167,1635.16,2.826,187.22,1.0,4.0,2.0,
+random_forest,P2,forest,210000,full_210k,4.741,3,median of 3 refits (4 threads),10.613,652608,0.6224,606.232,1902.38,2.84,190.95,64.0,9160.0,8.0,
+pca_lr_95,P2,pca_linear,20000,subsample_20k,0.351,3,median of 3 refits (4 threads),7.108,47658,0.0455,53.388,1287.3,2.436,189.61,,,,5659.0
+pca_random_forest_99,P2,pca_forest,20000,subsample_20k,1.918,3,median of 3 refits (4 threads),11.595,333742,0.3183,53.441,1167.22,2.47,188.89,64.0,3770.0,8.0,9042.0
+pca_lightgbm_80,P2,pca_gbdt,20000,subsample_20k,0.932,3,median of 3 refits (4 threads),10.208,187135,0.1785,53.451,1180.2,2.445,223.23,100.0,3100.0,21.0,2877.0
+xgb_hist,P3,xgboost,210000,full_210k,13.436,3,median of 3 refits (4 threads),12.572,415281,0.396,606.181,1855.62,2.826,223.45,1893.0,14684.0,3.0,
+catboost,P3,catboost,210000,full_210k,126.652,1,"n=1 refit (>=120s or slow family, 4 threads)",19.437,1626928,1.5516,572.432,1835.97,2.974,218.86,1549.0,198272.0,7.0,
+lgbm_native_flags,P3,lightgbm,210000,full_210k,14.8,3,median of 3 refits (4 threads),47.856,822974,0.7848,606.25,1540.06,2.812,339.31,1887.0,16983.0,9.0,
+lgbm_native,P3,lightgbm,210000,full_210k,13.767,3,median of 3 refits (4 threads),44.995,769865,0.7342,562.976,1927.44,2.603,314.72,1764.0,15876.0,9.0,
+lgbm_imputed_flags,P3,lightgbm,210000,full_210k,12.748,3,median of 3 refits (4 threads),40.347,628807,0.5997,558.653,1733.77,2.433,296.66,1458.0,13122.0,9.0,
+hgb,P3,hgb,210000,full_210k,16.982,3,median of 3 refits (4 threads),16.342,261747,0.2496,606.247,2130.67,2.826,198.12,267.0,4806.0,13.0,
+gb_classic,P3,gradient_boosting,50000,subsample_50k,77.599,1,"n=1 refit (>=120s or slow family, 4 threads)",12.386,410648,0.3916,133.581,1509.11,2.446,196.8,314.0,7394.0,5.0,
+adaboost,P3,adaboost,210000,full_210k,160.874,1,"n=1 refit (>=120s or slow family, 4 threads)",48.925,50713,0.0484,558.503,1608.0,2.447,198.05,372.0,744.0,1.0,
+xgboost_imb_class_weights,P3,imbalance,210000,weighted_210k,12.713,3,median of 3 refits (4 threads),12.278,388310,0.3703,606.183,1780.36,2.827,231.69,1769.0,13949.0,3.0,
+xgboost_imb_undersample,P3,imbalance,74290,undersample_74k,5.669,3,median of 3 refits (4 threads),12.545,557324,0.5315,606.037,1829.67,2.801,250.06,1749.0,13409.0,3.0,
+xgboost_imb_smote,P3,imbalance,345710,smote_346k,68.442,1,"n=1 refit (>=120s or slow family, 4 threads)",14.861,5610529,5.3506,983.607,1757.06,2.425,291.83,2217.0,16166.0,3.0,
+catboost_imb_class_weights,P3,imbalance,210000,weighted_210k,129.818,1,"n=1 refit (>=120s or slow family, 4 threads)",19.547,2136182,2.0372,572.432,2434.41,2.977,221.69,1586.0,203008.0,7.0,
+catboost_imb_undersample,P3,imbalance,74290,undersample_74k,28.515,1,"n=1 refit (>=120s or slow family, 4 threads)",19.255,1278941,1.2197,572.264,2220.42,2.979,238.72,951.0,121728.0,7.0,
+catboost_imb_smote,P3,imbalance,345710,smote_346k,265.699,1,"n=1 refit (>=120s or slow family, 4 threads)",236.481,6904289,6.5844,983.605,1640.58,2.436,279.64,1662.0,212736.0,7.0,
+lgbm_monotone,P3,lightgbm_monotone,210000,full_210k,12.133,3,median of 3 refits (4 threads),39.5,623635,0.5947,562.833,1903.78,2.603,298.44,1441.0,12969.0,9.0,
+avg_top3,P3,ensemble,210000,full_210k,0.0,3,No separate fit (unweighted average of 3 base models),39.92,2047844,1.953,0.0,215.69,3.0,257.59,3442.0,212956.0,7.0,134.0
+stack_lr,P3,ensemble,210000,full_210k_oof_168k,635.3,1,n=1: 4-fold OOF base fits (635.2s) + median-of-3 meta fit (0.07s),42.081,2048047,1.9532,14.528,301.19,3.003,255.62,3442.0,212956.0,7.0,138.0

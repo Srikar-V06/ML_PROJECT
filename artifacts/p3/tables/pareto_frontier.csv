@@ -1,0 +1,10 @@
+frontier,model
+train_time,avg_top3
+train_time,catboost
+train_time,catboost_imb_class_weights
+infer_time,grade_only
+infer_time,logreg_baseline
+infer_time,xgboost_imb_class_weights
+infer_time,xgb_hist
+infer_time,catboost
+infer_time,catboost_imb_class_weights
