@@ -6,6 +6,8 @@ pyarrow==23.0.1
 pytest==9.2.0
 PyYAML==6.0.3
 scikit-learn==1.7.2
+imbalanced-learn==0.14.2
+sklearn-compat==0.1.6
 lightgbm==4.6.0
 xgboost==3.1.2
 catboost==1.2.8

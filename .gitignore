@@ -13,6 +13,7 @@ kaggle.json
 !artifacts/p1p2_300k/predictions/*.parquet
 !artifacts/p3/*.csv
 !artifacts/p3/tables/*.csv
+!artifacts/p3/tables/*.parquet
 !artifacts/p3/predictions/*.parquet
 !reports/tables/*.csv
 !reports/preds/*.parquet
