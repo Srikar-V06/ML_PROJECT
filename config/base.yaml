@@ -1,23 +1,42 @@
 seed: 42
-sample_size: 200000
-maturity_threshold: 0.90
-split_fractions: [0.70, 0.15, 0.15]
+sample_size: 300000
+maturity_threshold: 0.9
+split_fractions:
+- 0.7
+- 0.15
+- 0.15
 cv_folds: 4
-cost_ratios: [5.0, 10.0, 15.0]
-bootstrap_iterations: 1000
+cost_ratios:
+- 5.0
+- 10.0
+- 15.0
+bootstrap_iterations: 250
 auc_allowlist: []
-target: {Fully Paid: 0, Charged Off: 1, Default: 1}
-prosper_target: {Completed: 0, Defaulted: 1, Chargedoff: 1}
+target:
+  Fully Paid: 0
+  Charged Off: 1
+  Default: 1
+prosper_target:
+  Completed: 0
+  Defaulted: 1
+  Chargedoff: 1
 paths:
   lending_club: data/raw/accepted_2007_to_2018Q4.csv.gz
   dictionary: data/raw/LCDataDictionary.xlsx
   prosper: data/raw/prosperLoanData.csv
-  sample: data/processed/lending_club_200k.parquet
-  diagnostics: data/processed/audit_only.parquet
-  prosper_common: data/processed/prosper_common.parquet
-  splits: splits
-  artifacts: artifacts
-  docs: docs
+  sample: data/processed/p1p2_300k/sample.parquet
+  diagnostics: data/processed/p1p2_300k/audit.parquet
+  prosper_common: data/processed/p1p2_300k/prosper_common.parquet
+  splits: splits/p1p2_300k
+  artifacts: artifacts/p1p2_300k
+  borrower_mapping: data/raw/lc_loan.csv.zip
+  excluded_loan_ids: splits/p1p2_300k/excluded_loan_ids.parquet
 sources:
   dictionary: https://bigblue.depaul.edu/jlee141/econdata/LendingClub_LoanData/LC_DataDictionary.xlsx
   prosper: https://s3.amazonaws.com/udacity-hosted-downloads/ud651/prosperLoanData.csv
+evaluation_splits:
+- val
+pca_fit_rows: 20000
+model_features: 50
+search_trials: 3
+search_fit_rows: 3000

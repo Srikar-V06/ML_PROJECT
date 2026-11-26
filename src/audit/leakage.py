@@ -6,7 +6,7 @@ from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 
 from src.audit.missingness import study
-from src.audit.schema import classify
+from src.audit.schema import classify, select_inputs
 from src.data.splits import load
 from src.models.baselines import model_frame, sanity
 from src.utils.io import artifact, cli_config, write_json
@@ -60,7 +60,7 @@ def compare(cfg, train, val, clean, post):
 
 
 def run(cfg):
-    splits = load(cfg)
+    splits = load(cfg, names=["train", "val"])
     clean = [c for c in splits["train"] if c not in ("issue_d", "target")]
     extra = pd.read_parquet(cfg["paths"]["diagnostics"]).set_index("id", verify_integrity=True)
     train, val = (splits[key].join(extra, validate="one_to_one").reset_index() for key in ("train", "val"))
@@ -73,13 +73,18 @@ def run(cfg):
         rows.append(dict(feature_name=col, dtype=str(train[col].dtype), missing_rate=train[col].isna().mean(),
                          stage=stage, decision="keep" if col in clean else "drop", single_feature_auc=auc, reason=reason))
     table = pd.DataFrame(rows)
+    if cfg.get("model_features") == 50:
+        selected = select_inputs(train)
+        reserve = table.decision.eq("keep") & ~table.feature_name.isin(selected)
+        table.loc[reserve, "decision"] = "reserve"
+        table.loc[reserve, "reason"] += " Reserved outside the 50-field training-coverage selection."
     table.to_csv(artifact(cfg, "feature_audit.csv"), index=False)
     keep = table.query("decision == 'keep'")
     assert len(keep) >= 50 and keep.stage.eq("origination_time").all()
     assert keep.loc[~keep.feature_name.isin(cfg["auc_allowlist"]), "single_feature_auc"].max() <= .85
     study(train, cfg)
     write_json(artifact(cfg, "metrics/overfit_sanity.json"), sanity(model_frame(train[clean].iloc[:1000]), train.target, cfg["seed"]))
-    compare(cfg, train, val, clean, table.loc[table.stage.eq("post_origination_leakage"), "feature_name"].tolist())
+    compare(cfg, train, val, keep.feature_name.tolist(), table.loc[table.stage.eq("post_origination_leakage"), "feature_name"].tolist())
     log(cfg, "audit", len(train), len(clean))
 
 

@@ -34,6 +34,9 @@ def run(cfg):
     # Prosper's file repeats some listings across rating records. Retain one per loan.
     repeated = int(frame.LoanKey.duplicated().sum())
     frame = frame.drop_duplicates("LoanKey")
+    if cfg["paths"].get("borrower_mapping"):
+        frame = frame.dropna(subset=["MemberKey"]).sort_values(
+            ["LoanOriginationDate", "LoanKey"]).drop_duplicates("MemberKey")
     out = pd.DataFrame({"loan_id": frame.LoanKey, "issue_d": pd.to_datetime(frame.LoanOriginationDate),
                         "target": target.loc[frame.index].astype("int8")})
     for name, source, scale, _ in MAPPING:

@@ -1,0 +1,18 @@
+{
+  "study": "v1-random_forest-d1510a79de1708339bab71a65f897926f1aec6bca017ee6ae38b58f85964bee6-42-3000",
+  "params": {
+    "max_depth": 8,
+    "min_samples_leaf": 103,
+    "max_features": "sqrt",
+    "n_estimators": 64
+  },
+  "mean_auc": 0.6978129648793724,
+  "fold_auc": [
+    0.6803445554169647,
+    0.6984165914790268,
+    0.7016870503953496,
+    0.7108036622261483
+  ],
+  "fit_row_limit": 3000,
+  "completed_trials": 3
+}

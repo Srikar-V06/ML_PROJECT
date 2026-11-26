@@ -7,7 +7,6 @@ from src.data.prep_lending_club import run as prepare_lending
 from src.data.prep_prosper import run as prepare_prosper
 from src.data.splits import freeze
 from src.evaluation.comparison import run as compare
-from src.report import run as report
 from src.train import run as train
 from src.utils.io import cli_config
 
@@ -21,7 +20,6 @@ def run(cfg):
         train(model, cfg)
     compare(cfg)
     prepare_prosper(cfg)
-    report(cfg)
 
 
 if __name__ == "__main__":

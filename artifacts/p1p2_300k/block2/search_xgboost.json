@@ -1,0 +1,17 @@
+{
+  "study": "v1-xgboost-d1510a79de1708339bab71a65f897926f1aec6bca017ee6ae38b58f85964bee6-42-3000",
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.0286449874364605,
+    "max_depth": 2
+  },
+  "mean_auc": 0.6953760116881732,
+  "fold_auc": [
+    0.6758721653086188,
+    0.6936111822832906,
+    0.7042294615516298,
+    0.7077912376091535
+  ],
+  "fit_row_limit": 3000,
+  "completed_trials": 3
+}

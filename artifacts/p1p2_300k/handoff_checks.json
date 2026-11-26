@@ -1,0 +1,9 @@
+{
+  "borrowers": 300000,
+  "model_fields": 50,
+  "validation_files": 21,
+  "verified_labels": 945000,
+  "reloaded_models": 21,
+  "replayed_rows_per_model": 32,
+  "test_prediction_files": 0
+}

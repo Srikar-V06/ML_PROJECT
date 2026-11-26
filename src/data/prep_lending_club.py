@@ -106,6 +106,17 @@ def representation(cfg, pool, sample):
     assert table.query("measure == 'default_rate'").difference.max() < .0015
 
 
+def linked_members(full, mapping_path):
+    lookup = pd.read_csv(mapping_path, usecols=["id", "member_id", "issue_d", "loan_amnt"],
+                         dtype={"member_id": "string"}).set_index("id", verify_integrity=True)
+    overlap = full.set_index("id").reindex(lookup.index)
+    month = pd.to_datetime(lookup.issue_d, format="%b-%Y")
+    if not (overlap.loan_amnt.eq(lookup.loan_amnt).fillna(False).all()
+            and overlap.issue_d.eq(month).all()):
+        raise ValueError("Historical loan identifiers do not agree on issue month and principal.")
+    return full.id.map(lookup.member_id)
+
+
 def run(cfg):
     source = cfg["paths"]["lending_club"]
     cols = pd.read_csv(source, nrows=0).columns
@@ -123,6 +134,13 @@ def run(cfg):
     del frames
     assert full.id.is_unique and full.issue_d.notna().all() and full.term.isin([36, 60]).all()
     raw = len(full)
+    mapping_path = cfg["paths"].get("borrower_mapping")
+    if mapping_path:
+        full["member_id"] = linked_members(full, mapping_path)
+    full["member_id"] = full.member_id.str.strip().replace("", pd.NA)
+    known = full.member_id.notna()
+    if not known.any():
+        raise ValueError("Cannot build a borrower cohort: every member_id is missing.")
     statuses = full.loan_status.value_counts(dropna=False).to_dict()
     full["quarter"] = full.issue_d.dt.to_period("Q").astype(str)
     full["target"] = full.loan_status.map(cfg["target"])
@@ -139,21 +157,30 @@ def run(cfg):
     plt.close()
     mature = curves[36].dropna().ge(cfg["maturity_threshold"]).cummin()
     cutoff = mature[mature].index[-1]
-    known = full.member_id.notna()
-    repeated = full.loc[known].sort_values(["issue_d", "id"]).member_id.duplicated()
-    pool = full.drop(index=repeated[repeated].index)
+    pool = full.loc[known]
     terminal = pool.target.notna()
     immature = int((terminal & pool.quarter.gt(cutoff)).sum())
     pool = pool.loc[terminal & pool.quarter.le(cutoff)].copy()
+    pool = pool.sort_values(["issue_d", "id"])
+    repeated = pool.member_id.duplicated()
+    pool = pool.loc[~repeated]
+    exclusion_path = cfg["paths"].get("excluded_loan_ids")
+    previously_used = pd.read_parquet(exclusion_path, columns=["id"]).id if exclusion_path else []
+    reused = pool.id.isin(previously_used)
+    pool = pool.loc[~reused]
+    if len(pool) < cfg["sample_size"]:
+        raise ValueError(f"Only {len(pool):,} eligible distinct borrowers for a requested sample of {cfg['sample_size']:,}.")
     pool["target"] = pool.target.astype("int8")
     sample, rare = stratify(pool, cfg["sample_size"], cfg["seed"])
     representation(cfg, pool, sample)
     stats = dict(raw_rows=raw, csv_footer_records=footers, member_ids_present=int(known.sum()),
+                 previously_used_removed=int(reused.sum()),
                  duplicate_members_removed=int(repeated.sum()), status_counts=statuses, cutoff=cutoff,
                  immature_terminal_removed=immature, mature_rows=len(pool), sampled_rows=len(sample),
                  rare_stratum_rows=rare, source_sha256=digest(source), raw_columns=len(cols))
     write_json(artifact(cfg, "tables/population.json"), stats)
     ids = set(sample.id.astype(str))
+    member_keys = sample.set_index("id").member_id
     del full, pool, sample
     selected = []
     for block in pd.read_csv(source, dtype="string", chunksize=20000):
@@ -161,6 +188,7 @@ def run(cfg):
         if len(subset):
             selected.append(subset.copy())
     data = parse(pd.concat(selected, ignore_index=True))
+    data["member_id"] = data.id.map(member_keys)
     del selected
     for c in data.select_dtypes("string"):
         if c in ("id", "member_id", "zip_code", "emp_title", "title", "desc"):

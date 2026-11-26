@@ -26,6 +26,20 @@ PREFIX = ("out_prncp", "total_pymnt", "total_rec_", "last_pymnt_", "next_pymnt_"
           "hardship_", "debt_settlement_", "settlement_")
 
 
+def select_inputs(train):
+    """Keep core underwriting fields and fill the 50-field budget by training coverage."""
+    core = """loan_amnt term int_rate installment grade sub_grade emp_length home_ownership
+              annual_inc verification_status purpose dti delinq_2yrs earliest_cr_line fico_range_low
+              inq_last_6mths open_acc pub_rec revol_bal revol_util total_acc""".split()
+    extra = sorted(CLEAN.difference(core))
+    numeric = train[extra].select_dtypes(include="number")
+    varying = numeric.loc[:, numeric.nunique() > 1]
+    ranked = varying.notna().sum().sort_values(ascending=False, kind="stable")
+    selected = core + ranked.index[:50 - len(core)].tolist()
+    assert len(selected) == len(set(selected)) == 50 and set(selected) <= CLEAN
+    return selected
+
+
 def classify(name):
     if name in CLEAN:
         return "origination_time", "Application, original loan terms or credit bureau attributes at underwriting."

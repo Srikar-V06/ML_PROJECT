@@ -56,7 +56,9 @@ def run(cfg, stage, trials=12, fit_row_limit=20000):
                 records.append(save_validation(name, model, vy, model.predict_proba(V)[:, 1], cfg))
                 diagnostics(model, (X, y), (V, vy), cfg)
             pd.DataFrame(records).to_csv(artifact(cfg, "tables/block2_classical.csv"), index=False)
-            pca_study((X, y), (V, vy), flags, best_params["random_forest"], cfg)
+            pca_rows = cfg.get("pca_fit_rows", len(X))
+            pca_x = X.sample(min(pca_rows, len(X)), random_state=cfg["seed"]) if pca_rows < len(X) else X
+            pca_study((pca_x, y.loc[pca_x.index]), (V, vy), flags, best_params["random_forest"], cfg)
 
 
 if __name__ == "__main__":
@@ -64,11 +66,13 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="config/base.yaml")
     parser.add_argument("--sample", type=Path, help="Alternate location for P1's frozen sample")
     parser.add_argument("--stage", choices=["all", "boosters", "classical", "eda"], default="all")
-    parser.add_argument("--trials", type=int, default=12, help="Total completed Optuna trials per model")
-    parser.add_argument("--fit-row-limit", type=int, default=20000,
+    parser.add_argument("--trials", type=int, help="Total completed Optuna trials per model")
+    parser.add_argument("--fit-row-limit", type=int,
                         help="Seeded sample per inner fitting fold (0 uses all rows)")
     args = parser.parse_args()
     cfg = config(args.config)
     if args.sample:
         cfg["paths"]["sample"] = str(args.sample)
-    run(cfg, args.stage, args.trials, args.fit_row_limit)
+    trials = cfg.get("search_trials", 12) if args.trials is None else args.trials
+    limit = cfg.get("search_fit_rows", 20000) if args.fit_row_limit is None else args.fit_row_limit
+    run(cfg, args.stage, trials, limit)

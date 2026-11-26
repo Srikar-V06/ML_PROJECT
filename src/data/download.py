@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.request import urlretrieve
 import zipfile
 
-from src.utils.io import cli_config
+from src.utils.io import artifact, cli_config, digest, write_json
 
 
 def ensure(cfg):
@@ -19,6 +19,10 @@ def ensure(cfg):
             temp.replace(dest)
     if not zipfile.is_zipfile(cfg["paths"]["dictionary"]):
         raise ValueError("Invalid dictionary workbook")
+    if cfg["paths"].get("borrower_mapping"):
+        names = ["lending_club", "borrower_mapping", "dictionary", "prosper"]
+        write_json(artifact(cfg, "tables/input_digests.json"),
+                   {key: digest(cfg["paths"][key]) for key in names})
 
 
 if __name__ == "__main__":
