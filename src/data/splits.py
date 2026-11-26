@@ -9,7 +9,15 @@ from src.utils.io import cli_config, digest, write_json
 from src.utils.logging import log
 
 
+def verify_borrowers(ids, cfg):
+    keys = pd.read_parquet(cfg["paths"]["diagnostics"], columns=["id", "member_id"])
+    members = keys.set_index("id", verify_integrity=True).member_id.reindex(ids).astype("string").str.strip()
+    if members.isna().any() or members.eq("").any() or not members.is_unique:
+        raise ValueError("Each sampled loan must map to a distinct borrower with a populated member_id.")
+
+
 def freeze(data, cfg):
+    verify_borrowers(data.id, cfg)
     root = Path(cfg["paths"]["splits"])
     root.mkdir(parents=True, exist_ok=True)
     data = data.sort_values(["issue_d", "id"]).reset_index(drop=True)
@@ -56,6 +64,7 @@ def load(cfg, names=None):
         if digest(root / name) != expected:
             raise ValueError(f"Split checksum mismatch: {name}")
     data = pd.read_parquet(cfg["paths"]["sample"]).set_index("id", verify_integrity=True)
+    verify_borrowers(data.index, cfg)
     return {name: data.loc[pd.read_parquet(root / info["file"]).id]
             for name, info in manifest["splits"].items() if names is None or name in names}
 

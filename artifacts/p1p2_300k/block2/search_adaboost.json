@@ -1,0 +1,16 @@
+{
+  "study": "v1-adaboost-d1510a79de1708339bab71a65f897926f1aec6bca017ee6ae38b58f85964bee6-42-3000",
+  "params": {
+    "n_estimators": 200,
+    "learning_rate": 0.2080332735977462
+  },
+  "mean_auc": 0.6932801556423909,
+  "fold_auc": [
+    0.6703789878576341,
+    0.6909988324121552,
+    0.7035129920820365,
+    0.7082298102177378
+  ],
+  "fit_row_limit": 3000,
+  "completed_trials": 3
+}

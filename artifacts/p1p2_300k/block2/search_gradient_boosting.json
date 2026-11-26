@@ -1,0 +1,17 @@
+{
+  "study": "v1-gradient_boosting-d1510a79de1708339bab71a65f897926f1aec6bca017ee6ae38b58f85964bee6-42-3000",
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.0286449874364605,
+    "max_depth": 2
+  },
+  "mean_auc": 0.693600689200075,
+  "fold_auc": [
+    0.6752396418799274,
+    0.6921265732407955,
+    0.6996559994376307,
+    0.7073805422419466
+  ],
+  "fit_row_limit": 3000,
+  "completed_trials": 3
+}

@@ -39,6 +39,8 @@ def tune(name, X, y, cfg, trials, row_limit):
         return float(np.mean(scores))
 
     database = artifact(cfg, "block2/search.sqlite3").resolve().as_posix()
+    # Optuna expands format placeholders in storage URLs, including literal path braces.
+    database = database.replace("{", "{{").replace("}", "}}")
     study_name = f"v1-{name}-{digest(root / 'manifest.json')}-{cfg['seed']}-{row_limit}"
     study = optuna.create_study(study_name=study_name, storage=f"sqlite:///{database}",
                                 direction="maximize", load_if_exists=True)

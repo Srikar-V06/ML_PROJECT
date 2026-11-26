@@ -1,0 +1,9 @@
+rule,train_loans,train_default_rate
+int_rate > 14.48 AND term > 48 AND grade_C indicator is off,29015,0.3657763225917629
+int_rate > 14.48 AND (term <= 48 or missing) AND payment_to_income > 0.11688021,12446,0.2630564036638277
+int_rate > 14.48 AND term > 48 AND grade_C indicator is on,8958,0.2429113641437821
+(int_rate <= 14.48 or missing) AND (int_rate > 10.18 or missing) AND term > 48,13118,0.21573410580881233
+int_rate > 14.48 AND (term <= 48 or missing) AND (payment_to_income <= 0.11688021 or missing),30763,0.19526704157591912
+(int_rate <= 14.48 or missing) AND (int_rate > 10.18 or missing) AND (term <= 48 or missing),62615,0.1359258963507147
+(int_rate <= 14.48 or missing) AND int_rate <= 10.18 AND (int_rate > 7.885 or missing),31499,0.0874630940664783
+(int_rate <= 14.48 or missing) AND int_rate <= 10.18 AND int_rate <= 7.885,21586,0.04535346984156398

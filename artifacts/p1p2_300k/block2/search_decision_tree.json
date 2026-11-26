@@ -1,0 +1,17 @@
+{
+  "study": "v1-decision_tree-d1510a79de1708339bab71a65f897926f1aec6bca017ee6ae38b58f85964bee6-42-3000",
+  "params": {
+    "max_depth": 3,
+    "min_samples_leaf": 71,
+    "ccp_alpha": 0.001
+  },
+  "mean_auc": 0.6587041714512334,
+  "fold_auc": [
+    0.6582068652070839,
+    0.6637932055336033,
+    0.654742131801781,
+    0.6580744832624655
+  ],
+  "fit_row_limit": 3000,
+  "completed_trials": 3
+}

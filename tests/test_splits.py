@@ -3,9 +3,33 @@ import json
 
 import numpy as np
 import pandas as pd
+import pytest
 
-from src.data.prep_lending_club import stratify
+from src.data.prep_lending_club import linked_members, stratify
+from src.data.splits import verify_borrowers
 from src.utils.io import digest
+
+
+@pytest.mark.parametrize("second_member", [None, "  ", " A "])
+def test_reject_unverified_borrowers(tmp_path, second_member):
+    path = tmp_path / "keys.parquet"
+    pd.DataFrame({"id": [1, 2], "member_id": ["A", second_member]}).to_parquet(path)
+    with pytest.raises(ValueError, match="distinct borrower"):
+        verify_borrowers([1, 2], {"paths": {"diagnostics": path}})
+
+
+def test_link_borrowers_by_verified_loan(tmp_path):
+    path = tmp_path / "old.csv"
+    old = pd.DataFrame(dict(id=[2, 1], member_id=["A", "B"], issue_d=["Jan-2015"]*2,
+                            loan_amnt=[200, 100]))
+    old.to_csv(path, index=False)
+    full = pd.DataFrame(dict(id=[1, 2, 3], loan_amnt=[100, 200, 100],
+                             issue_d=pd.to_datetime(["2015-01-01"]*3)))
+    keys = linked_members(full, path)
+    assert keys.iloc[:2].tolist() == ["B", "A"] and pd.isna(keys.iloc[2])
+    full.loc[0, "loan_amnt"] = 101
+    with pytest.raises(ValueError, match="principal"):
+        linked_members(full, path)
 
 
 def check_manifest(root):
@@ -32,18 +56,6 @@ def test_frozen_membership(fixture_run):
         assert train.loc[a].issue_d.max() <= train.loc[b].issue_d.min()
         previous = set(a) | set(b)
     assert cv.fold.nunique() == manifest["cv_folds"] == 4
-
-
-def test_production_split_manifest():
-    root = Path("splits")
-    manifest = check_manifest(root)
-    ids = []
-    for name, count in [("train", 140000), ("val", 30000), ("test", 30000)]:
-        part = manifest["splits"][name]
-        subset = pd.read_parquet(root/part["file"]).id
-        assert len(subset) == part["rows"] == count
-        ids.extend(subset)
-    assert len(set(ids)) == 200000
 
 
 def test_deterministic_stratification(fixture_run):

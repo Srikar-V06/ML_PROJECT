@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "order": [
+    "issue_d",
+    "id"
+  ],
+  "splits": {
+    "train": {
+      "rows": 210000,
+      "default_rate": 0.1768809523809524,
+      "start": "2007-06-01",
+      "end": "2015-05-01",
+      "file": "train_ids.parquet"
+    },
+    "val": {
+      "rows": 45000,
+      "default_rate": 0.20197777777777778,
+      "start": "2015-05-01",
+      "end": "2015-09-01",
+      "file": "val_ids.parquet"
+    },
+    "test": {
+      "rows": 45000,
+      "default_rate": 0.1990888888888889,
+      "start": "2015-09-01",
+      "end": "2015-12-01",
+      "file": "test_ids.parquet"
+    }
+  },
+  "sha256": {
+    "train_ids.parquet": "4d1c6c29e213bb464f32a324ba9af91a66f08514511a0895854a2b62e5495a9c",
+    "val_ids.parquet": "a75ecf426359c4f0b1a6e9c94e29dfb569a73e4530f97173843878ebc04bf9ce",
+    "test_ids.parquet": "6c2836f7499323f8374a22770b5b0381c1c027ff44abfa828d7c0b4f97cd33a1",
+    "train_expanding_cv.parquet": "b1587239e63d7f5a0b89df99297b565a4d69610e2620b5061d7d4a0212257987"
+  },
+  "cv_folds": 4,
+  "sample_sha256": "f0d0564560252aacb95127afbb0be900e94c64acba15fc9557eae5f27d4eadbf"
+}

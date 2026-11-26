@@ -1,29 +1,29 @@
-# Block 1 interfaces
+# Interfaces for the 300k handoff
 
-Run commands from the repository root with Python 3.12. The shipped configuration uses seed 42. All probabilities represent the probability of the adverse terminal outcome.
+Read config/base.yaml from the repository root. Every saved probability represents the adverse terminal outcome. All current model evidence uses Validation. Load only the partitions required by the current experiment.
 
-## Evaluation
+~~~python
+from pathlib import Path
+import joblib
+import pandas as pd
+from src.data.splits import load
+from src.models.baselines import model_frame
+from src.utils.io import config
 
-`evaluate(y_true, y_prob, split_name, model_name, out_dir, cost_ratios=(5.0, 10.0, 15.0), val_thresholds=None, n_bootstrap=1000, seed=42)` in `src.evaluation.metrics` consumes aligned one-dimensional arrays with both binary classes and finite probabilities in [0, 1]. When `out_dir` is supplied, it writes `<model_name>_<split_name>.json`. The CLI passes None and writes a combined `{"val": ..., "test": ...}` report.
+cfg = config()
+root = Path(cfg["paths"]["artifacts"])
+val = load(cfg, names=["val"])["val"]
+audit = pd.read_csv(root / "feature_audit.csv")
+fields = audit.loc[audit.decision.eq("keep"), "feature_name"].tolist()
+x = model_frame(val[fields])
+forest = joblib.load(root / "block2/models/random_forest.joblib")
+p = forest.predict_proba(x)[:, 1]
+~~~
 
-Each split record contains model and split strings, integer rows, float roc_auc, pr_auc (average precision), ks (maximum absolute class-CDF separation), brier, log_loss and ece (ten equal-width bins). Calibration uses an unpenalized intercept and slope on clipped log-odds. Both are JSON null for constant scores because they cannot be jointly identified. ci95 maps roc_auc, pr_auc, brier and ks to two percentile endpoints. The bootstrap resamples loans with replacement and redraws single-class samples.
-
-thresholds maps string keys "5.0", "10.0" and "15.0" to numeric cutoffs. Pass the validation mapping unchanged to Test. A probability equal to the threshold triggers rejection. cost_per_1000 maps each ratio to threshold, optimized, naive_050, approve_all and approval_rate. Costs use one unit for a false positive. The optimizer scans whole tie groups and prefers the higher threshold at equal cost.
-
-`compare_models(y_true, y_prob_a, y_prob_b, n_bootstrap=1000, seed=42)` in `src.evaluation.stats_tests` reports A minus B. delong contains difference, z, p_value and ci95. A nonzero difference with zero estimated variance has null z. paired_bootstrap contains roc_auc, pr_auc and brier, each with difference, p_value and ci95. Both models use the same resampled indices. The bootstrap test uses a null-centered two-sided tail with a finite-replication correction. Negative Brier differences favor A.
-
-## Model registry and predictions
-
-`register_model(name)` returns a decorator. The registered callable takes `(X, flags, cfg)` and returns an estimator supporting `fit(X, y)` and `predict_proba(X)[:, 1]`. X has the audited columns, with datetime columns expressed as days since 1970-01-01, numeric columns as float and missing strings represented by NaN. flags contains the Train-derived indicator column names. `get_model(name)` returns the factory and raises KeyError for unknown names. `list_models()` returns the sorted registered names. Import a new model module inside list_models so each fresh CLI process discovers it.
-
-`artifacts/predictions/<model>_<split>.parquet` has loan_id (int64, unique per file), y_true (int8), y_prob (float64) and split (string, val or test). Use loan_id to join predictions and assert identical labels before a paired comparison. The test cohort contains 30,000 records.
-
-## Frozen files
-
-`splits/manifest.json` has version (integer), order (list of sort keys), cv_folds (integer), sample_sha256 (hex digest of the clean parquet), sha256 (filename to hex digest) and splits (train, val, test). Each split record has file, rows, start, end and default_rate. Dates are inclusive ISO dates at monthly source precision. The three membership parquets have one int64 id column. train_expanding_cv.parquet has int64 id, integer fold (1 through 4) and string role (train or val). IDs recur across expanding folds by design.
-
-`src.data.splits.load(cfg)` verifies all five file digests and returns a dictionary of data frames indexed by loan id. Each has target, issue_d and 99 origination columns. Only rows with decision=keep in feature_audit.csv enter model factories. Model features exclude id, issue_d and target. Audit-only servicing data live under data/processed/audit_only.parquet.
-
-## Input provenance
-
-Lending Club uses the supplied accepted-loans gzip. The dictionary and historical Prosper export resolve from the URLs in config/base.yaml when the files are absent. Prosper's aligned parquet has loan_id (LoanKey), issue_d, target and the 17 underwriting fields described in artifacts/tables/prosper_feature_mapping.csv. Homeowner and grade values require platform-specific harmonization before external scoring.
+- **Inputs.** sample.parquet contains target, issue month, loan ID and 99 audited origination fields. The 50 keep fields are in source order. Reserved fields remain available for later studies. The separately stored member ID is checked for uniqueness by the loader. Identifiers and servicing fields stay outside prediction pipelines.
+- **Splits.** load verifies the sample and split digests in the manifest. Its frames have a unique loan ID index. Split membership parquets have an id column. The CV parquet adds fold (1–4) and role (train or val). Multiple appearances across expanding folds are expected.
+- **Preprocessing.** model_frame normalizes pandas dtypes. build_preprocessor in src/features/block2.py accepts tree or linear, a missing-flag list and an engineered switch. For AdaBoost and classic gradient boosting pass impute_tree=True. FEATURE_GROUPS supplies raw field groups. Construct any future ablation before computing ratios and selecting flags.
+- **Model factories.** get_model(name)(x, flags, cfg) returns an unfitted estimator or pipeline. Configure selected parameters through cfg["model_params"][name] for P2 families. Search files store parameters in the params field. P1 single-model training uses python -m src.train --model NAME; it saves the fitted object and scores the splits specified in the configuration.
+- **Predictions.** Each predictions/NAME_val.parquet contains unique loan_id, y_true, y_prob, split. Join by ID and verify labels before computing differences. Load the full fitted model with joblib and pass the same ordered raw model frame. P3 can evaluate the serialized versions directly.
+- **Evaluation.** evaluate(y_true, y_prob, split_name, model_name, out_dir, cost_ratios, val_thresholds, n_bootstrap, seed) returns discrimination, probability, calibration and threshold-based metrics. Supply validation thresholds when scoring Test. compare_models(y, p_a, p_b, n_bootstrap, seed) returns A minus B, paired confidence intervals and p-values. Only compare aligned predictions on identical borrowers.
+- **Prosper.** LoanKey identifies the selected loan and MemberKey defines one row per identified borrower. The processed table includes loan_id, issue_d, target and 17 mapped fields. For P5 select the intersection with the Lending Club schema, align units and categories, train on the common input representation, and document platform differences.

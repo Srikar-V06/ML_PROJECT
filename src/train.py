@@ -1,4 +1,6 @@
 import argparse
+from time import perf_counter
+import joblib
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -17,27 +19,36 @@ from src.utils.seed import set_seed
 
 def run(name, cfg):
     set_seed(cfg["seed"])
-    frames = load(cfg)
+    splits = cfg.get("evaluation_splits", ["val", "test"])
+    frames = load(cfg, names=["train", *splits])
     audit = pd.read_csv(artifact(cfg, "feature_audit.csv"))
     cols = audit.loc[audit.decision.eq("keep"), "feature_name"].tolist()
     assert len(cols) >= 50 and all(classify(c)[0] == "origination_time" for c in cols)
     missing = pd.read_csv(artifact(cfg, "missing_value_table.csv"))
-    flags = missing.loc[missing.add_missing_indicator, "feature_name"].tolist()
+    flags = missing.loc[missing.add_missing_indicator & missing.feature_name.isin(cols), "feature_name"].tolist()
     x = model_frame(frames["train"][cols])
     model = get_model(name)(x, flags, cfg)
     with threadpool_limits(limits=2):
+        start = perf_counter()
         model.fit(x, frames["train"].target)
+        fit_seconds = perf_counter() - start
+    model_path = artifact(cfg, f"models/{name}.joblib")
+    joblib.dump(model, model_path, compress=3)
     metrics, thresholds = {}, None
-    for split in ("val", "test"):
+    for split in splits:
         frame = frames[split]
         features = model_frame(frame[cols])
+        start = perf_counter()
         p = model.predict_proba(features)[:, 1]
+        inference_seconds = perf_counter() - start
         pred = pd.DataFrame(dict(loan_id=frame.index, y_true=frame.target.to_numpy(), y_prob=p, split=split))
         pred.to_parquet(artifact(cfg, f"predictions/{name}_{split}.parquet"), index=False)
         metrics[split] = evaluate(pred.y_true, p, split, name, None, cfg["cost_ratios"], thresholds,
                                   cfg["bootstrap_iterations"], cfg["seed"])
         thresholds = metrics["val"]["thresholds"]
-        if split == "test":
+        metrics[split].update(fit_seconds=fit_seconds, inference_seconds_per_1000=inference_seconds*1000/len(p),
+                              model_bytes=model_path.stat().st_size)
+        if split == splits[-1]:
             plots(cfg, {name: pred}, name)
             if name == "woe_scorecard":
                 points = model.points(features)
