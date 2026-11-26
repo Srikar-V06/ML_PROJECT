@@ -1,0 +1,17 @@
+{
+  "family": "hgb",
+  "status": "partial_timeout",
+  "completed_trials": 16,
+  "warm_started": false,
+  "source": "optuna_p3",
+  "best_mean_auc": 0.7095161959624781,
+  "params_json": "{\"l2_regularization\": 9.624592377924772, \"learning_rate\": 0.07656672783088493, \"max_leaf_nodes\": 18, \"min_samples_leaf\": 82}",
+  "elapsed_seconds": 1539.51,
+  "params": {
+    "max_leaf_nodes": 18,
+    "min_samples_leaf": 82,
+    "l2_regularization": 9.624592377924772,
+    "learning_rate": 0.07656672783088493
+  },
+  "fit_row_limit": 25000
+}

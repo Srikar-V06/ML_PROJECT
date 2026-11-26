@@ -1,0 +1,15 @@
+{
+  "family": "adaboost",
+  "status": "partial_timeout",
+  "completed_trials": 12,
+  "warm_started": true,
+  "source": "optuna_p3",
+  "best_mean_auc": 0.7068231688797442,
+  "params_json": "{\"base_max_depth\": 1, \"learning_rate\": 0.2080332735977462}",
+  "elapsed_seconds": 1505.67,
+  "params": {
+    "base_max_depth": 1,
+    "learning_rate": 0.2080332735977462
+  },
+  "fit_row_limit": 25000
+}

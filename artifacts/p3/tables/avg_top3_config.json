@@ -1,0 +1,36 @@
+{
+  "members": [
+    "xgb_hist",
+    "catboost",
+    "logreg_baseline"
+  ],
+  "selection_rule": "Best GBDT by Val PR AUC (xgb_hist) + CatBoost (distinct algorithm, native categoricals) + best P1/P2 linear/tree model by Val PR AUC (logreg_baseline). Unweighted mean of probabilities.",
+  "member_val_pr_auc": {
+    "xgb_hist": 0.4400981724054275,
+    "catboost": 0.439997698443661,
+    "logreg_baseline": 0.4306998778859618
+  },
+  "member_val_roc_auc": {
+    "xgb_hist": 0.7517287691705671,
+    "catboost": 0.7528986305580911,
+    "logreg_baseline": 0.7473336875890828
+  },
+  "val_spearman_correlation": {
+    "xgb_hist": {
+      "xgb_hist": 1.0,
+      "catboost": 0.9932,
+      "logreg_baseline": 0.9668
+    },
+    "catboost": {
+      "xgb_hist": 0.9932,
+      "catboost": 1.0,
+      "logreg_baseline": 0.9666
+    },
+    "logreg_baseline": {
+      "xgb_hist": 0.9668,
+      "catboost": 0.9666,
+      "logreg_baseline": 1.0
+    }
+  },
+  "note": "Members were chosen on Val, so the ensemble's Val score is mildly optimistic; Test stays untouched."
+}

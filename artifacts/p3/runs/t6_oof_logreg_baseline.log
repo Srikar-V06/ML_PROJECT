@@ -1,0 +1,4 @@
+[T6-OOF] logreg_baseline fold=1 fit_rows=42000 oof_auc=0.6896 best_iter=None (1.82s)
+[T6-OOF] logreg_baseline fold=2 fit_rows=84000 oof_auc=0.7051 best_iter=None (2.49s)
+[T6-OOF] logreg_baseline fold=3 fit_rows=126000 oof_auc=0.7247 best_iter=None (3.02s)
+[T6-OOF] logreg_baseline fold=4 fit_rows=168000 oof_auc=0.7261 best_iter=None (4.39s)

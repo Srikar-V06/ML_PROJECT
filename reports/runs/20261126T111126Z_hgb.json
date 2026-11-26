@@ -1,0 +1,28 @@
+{
+  "family": "hgb",
+  "factory": "hgb",
+  "params": {
+    "max_leaf_nodes": 18,
+    "min_samples_leaf": 82,
+    "l2_regularization": 9.624592377924772,
+    "learning_rate": 0.07656672783088493
+  },
+  "best_iteration": 240,
+  "refit_rounds": 267,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000,
+  "fit_seconds": 125.52,
+  "val_roc_auc": 0.7508526897858041,
+  "val_pr_auc": 0.4376958428521228,
+  "val_brier": 0.1396874437023838,
+  "val_log_loss": 0.437581061095306,
+  "val_ece": 0.020180939166190792,
+  "val_ks": 0.36797412622755876,
+  "calibration_slope": 1.1113504867499358,
+  "calibration_intercept": 0.29136150929232124,
+  "model": "hgb",
+  "split": "val",
+  "timestamp": "20261126T111126Z"
+}

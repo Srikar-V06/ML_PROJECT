@@ -1,0 +1,30 @@
+{
+  "family": "ensemble",
+  "factory": "stack_lr",
+  "fit_rows": 168000,
+  "best_iteration": null,
+  "refit_rounds": null,
+  "fit_seconds": 1.0,
+  "val_roc_auc": 0.7528739334945673,
+  "val_pr_auc": 0.4410347575621997,
+  "val_brier": 0.1383802457354743,
+  "val_log_loss": 0.4346798435310885,
+  "val_ece": 0.007712471650853272,
+  "val_ks": 0.372015228820285,
+  "calibration_slope": 1.0530996934514,
+  "calibration_intercept": 0.03574289024108309,
+  "members": [
+    "xgb_hist",
+    "catboost",
+    "logreg_baseline"
+  ],
+  "meta_coefficients": {
+    "xgb_hist": 0.18114031083593365,
+    "catboost": 0.6513662537872417,
+    "logreg_baseline": 0.2554396674778477
+  },
+  "meta_intercept": 0.26849443926149863,
+  "model": "stack_lr",
+  "split": "val",
+  "timestamp": "20261126T121237Z"
+}

@@ -1,0 +1,16 @@
+[T3] Starting Optuna tuning for adaboost (trials=30, timeout=1500s)...
+[I 2026-11-26 16:26:38,261] A new study created in RDB with name: p3-adaboost-6ba0d7b4f792-42-25000
+[I 2026-11-26 16:28:25,488] Trial 0 finished with value: 0.7068231688797442 and parameters: {'base_max_depth': 1, 'learning_rate': 0.2080332735977462}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:31:10,350] Trial 1 finished with value: 0.7014291034792551 and parameters: {'base_max_depth': 2, 'learning_rate': 0.8246413065237453}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:34:59,833] Trial 2 finished with value: 0.7060120238338579 and parameters: {'base_max_depth': 3, 'learning_rate': 0.2080332735977462}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:36:36,313] Trial 3 finished with value: 0.6980629307797104 and parameters: {'base_max_depth': 1, 'learning_rate': 0.03681798416110504}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:38:17,133] Trial 4 finished with value: 0.7047193949806019 and parameters: {'base_max_depth': 1, 'learning_rate': 0.5924303317660699}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:40:51,562] Trial 5 finished with value: 0.7052501464428067 and parameters: {'base_max_depth': 2, 'learning_rate': 0.31917147176282534}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:42:13,536] Trial 6 finished with value: 0.7042670931950125 and parameters: {'base_max_depth': 1, 'learning_rate': 0.8889508333381624}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:45:35,809] Trial 7 finished with value: 0.7059718330271174 and parameters: {'base_max_depth': 3, 'learning_rate': 0.0458973673622611}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:47:01,415] Trial 8 finished with value: 0.6989968331841132 and parameters: {'base_max_depth': 1, 'learning_rate': 0.04098536023083469}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:48:14,545] Trial 9 finished with value: 0.7066814658533319 and parameters: {'base_max_depth': 1, 'learning_rate': 0.15580286252552478}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:50:16,138] Trial 10 finished with value: 0.7062911840468749 and parameters: {'base_max_depth': 2, 'learning_rate': 0.08298362510761034}. Best is trial 0 with value: 0.7068231688797442.
+[I 2026-11-26 16:51:41,904] Trial 11 finished with value: 0.705435277642734 and parameters: {'base_max_depth': 1, 'learning_rate': 0.11754615069609804}. Best is trial 0 with value: 0.7068231688797442.
+[T3] Tuned adaboost: status=partial_timeout trials=12 mean_cv_auc=0.7068231688797442 elapsed=1505.67s
+[T3] adaboost             fit_rows=210000 best_iter= 335 refit_rounds= 372 fit_s= 410.2 val_roc=0.7457 val_pr=0.4301

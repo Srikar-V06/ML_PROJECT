@@ -1,0 +1,9 @@
+feature,level,sign,grid_points,rows,violating_rows,max_violation
+dti,model_input,1,25,2000,0,0.0
+int_rate,model_input,1,25,2000,0,0.0
+revol_util,model_input,1,25,2000,0,0.0
+loan_to_income,model_input,1,25,2000,0,0.0
+payment_to_income,model_input,1,25,2000,0,0.0
+fico_range_low,model_input,-1,17,2000,0,0.0
+annual_inc,model_input,-1,25,2000,70,0.000579317172159588
+annual_inc,raw_input,-1,25,2000,1770,0.05058792549289856

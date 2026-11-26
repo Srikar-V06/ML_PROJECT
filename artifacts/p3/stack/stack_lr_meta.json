@@ -1,0 +1,53 @@
+{
+  "meta_learner": "LogisticRegression(C=1.0) on member logits",
+  "oof_rows": 168000,
+  "oof_folds": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "coefficients": {
+    "xgb_hist": 0.18114031083593365,
+    "catboost": 0.6513662537872417,
+    "logreg_baseline": 0.2554396674778477
+  },
+  "intercept": 0.26849443926149863,
+  "oof_stack_roc_auc_in_sample": 0.7193446889478919,
+  "oof_member_roc_auc": {
+    "xgb_hist": 0.7173457597954633,
+    "catboost": 0.7184837318889581,
+    "logreg_baseline": 0.7137494251781695
+  },
+  "per_fold": [
+    {
+      "fold": 1,
+      "rows": 42000,
+      "xgb_hist_oof_auc": 0.6973341483357389,
+      "catboost_oof_auc": 0.69663673895483,
+      "logreg_baseline_oof_auc": 0.6895964653303626
+    },
+    {
+      "fold": 2,
+      "rows": 42000,
+      "xgb_hist_oof_auc": 0.7108334698969481,
+      "catboost_oof_auc": 0.7122313884810962,
+      "logreg_baseline_oof_auc": 0.7051309592779104
+    },
+    {
+      "fold": 3,
+      "rows": 42000,
+      "xgb_hist_oof_auc": 0.7281783320929427,
+      "catboost_oof_auc": 0.7276774155732851,
+      "logreg_baseline_oof_auc": 0.7246554844367834
+    },
+    {
+      "fold": 4,
+      "rows": 42000,
+      "xgb_hist_oof_auc": 0.7285956343269571,
+      "catboost_oof_auc": 0.7304563808459,
+      "logreg_baseline_oof_auc": 0.7261156158004951
+    }
+  ],
+  "note": "OOF scores come from members refit on each expanding fold's earlier loans and scored on the next chunk; full-Train refits are the deployed members. Fold-1 members saw only 42k loans, so the meta weights are learned on weaker members than those deployed."
+}

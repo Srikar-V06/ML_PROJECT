@@ -1,0 +1,26 @@
+{
+  "family": "adaboost",
+  "factory": "adaboost_p3",
+  "params": {
+    "base_max_depth": 1,
+    "learning_rate": 0.2080332735977462
+  },
+  "best_iteration": 335,
+  "refit_rounds": 372,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000,
+  "fit_seconds": 410.21,
+  "val_roc_auc": 0.7457139634142584,
+  "val_pr_auc": 0.43008204994664617,
+  "val_brier": 0.1555257821540928,
+  "val_log_loss": 0.48940000009029627,
+  "val_ece": 0.11607256618415211,
+  "val_ks": 0.3602816419912998,
+  "calibration_slope": 2.660145682818258,
+  "calibration_intercept": 0.6323053475982081,
+  "model": "adaboost",
+  "split": "val",
+  "timestamp": "20261126T112834Z"
+}

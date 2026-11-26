@@ -1,0 +1,282 @@
+[T3] Starting Optuna tuning for lightgbm (trials=30, timeout=1500s)...
+[I 2026-11-26 16:13:40,835] A new study created in RDB with name: p3-lightgbm-6ba0d7b4f792-42-25000
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:13:49,191] Trial 0 finished with value: 0.7104172284371166 and parameters: {'num_leaves': 16, 'min_child_samples': 81, 'feature_fraction': 0.9753571532049581, 'bagging_fraction': 0.8659969709057025, 'lambda_l2': 0.24810409748678114, 'learning_rate': 0.0286449874364605}. Best is trial 0 with value: 0.7104172284371166.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:13:53,059] Trial 1 finished with value: 0.7083320117569983 and parameters: {'num_leaves': 26, 'min_child_samples': 39, 'feature_fraction': 0.5290418060840998, 'bagging_fraction': 0.9330880728874675, 'lambda_l2': 0.25378155082656645, 'learning_rate': 0.08341106432362087}. Best is trial 0 with value: 0.7104172284371166.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:06,804] Trial 2 finished with value: 0.7118649936206624 and parameters: {'num_leaves': 10, 'min_child_samples': 195, 'feature_fraction': 0.9162213204002109, 'bagging_fraction': 0.6061695553391381, 'lambda_l2': 0.005337032762603957, 'learning_rate': 0.017322667470546258}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:20,570] Trial 3 finished with value: 0.7105931730971174 and parameters: {'num_leaves': 44, 'min_child_samples': 110, 'feature_fraction': 0.7159725093210578, 'bagging_fraction': 0.645614570099021, 'lambda_l2': 0.280163515871626, 'learning_rate': 0.01518747922672247}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:26,975] Trial 4 finished with value: 0.7078044976825547 and parameters: {'num_leaves': 43, 'min_child_samples': 79, 'feature_fraction': 0.728034992108518, 'bagging_fraction': 0.8925879806965068, 'lambda_l2': 0.006290644294586149, 'learning_rate': 0.04666963767236924}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:30,780] Trial 5 finished with value: 0.6869294782108318 and parameters: {'num_leaves': 79, 'min_child_samples': 18, 'feature_fraction': 0.8037724259507192, 'bagging_fraction': 0.5852620618436457, 'lambda_l2': 0.0018205657658407262, 'learning_rate': 0.17160445029754812}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:38,114] Trial 6 finished with value: 0.7089419544924549 and parameters: {'num_leaves': 124, 'min_child_samples': 164, 'feature_fraction': 0.6523068845866853, 'bagging_fraction': 0.5488360570031919, 'lambda_l2': 0.5456725485601478, 'learning_rate': 0.03738105868191797}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:42,368] Trial 7 finished with value: 0.7093102683508421 and parameters: {'num_leaves': 22, 'min_child_samples': 104, 'feature_fraction': 0.5171942605576092, 'bagging_fraction': 0.954660201039391, 'lambda_l2': 0.010842262717330166, 'learning_rate': 0.07277150634170934}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:14:46,739] Trial 8 finished with value: 0.7047713880601715 and parameters: {'num_leaves': 45, 'min_child_samples': 109, 'feature_fraction': 0.7733551396716398, 'bagging_fraction': 0.5924272277627636, 'lambda_l2': 7.556810141274433, 'learning_rate': 0.10196967939171485}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:15:02,539] Trial 9 finished with value: 0.7076934623525363 and parameters: {'num_leaves': 121, 'min_child_samples': 180, 'feature_fraction': 0.7989499894055425, 'bagging_fraction': 0.9609371175115584, 'lambda_l2': 0.002259279742015696, 'learning_rate': 0.017987863473362915}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:15:25,978] Trial 10 finished with value: 0.7101256247561789 and parameters: {'num_leaves': 70, 'min_child_samples': 155, 'feature_fraction': 0.9847685553939329, 'bagging_fraction': 0.7269446358363301, 'lambda_l2': 0.030955323601318526, 'learning_rate': 0.01123007474226886}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:15:51,063] Trial 11 finished with value: 0.7110033318670665 and parameters: {'num_leaves': 49, 'min_child_samples': 196, 'feature_fraction': 0.8918148105745084, 'bagging_fraction': 0.6898021217101117, 'lambda_l2': 2.1022994083881414, 'learning_rate': 0.010293635569692235}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:16:15,001] Trial 12 finished with value: 0.7105735089783001 and parameters: {'num_leaves': 102, 'min_child_samples': 199, 'feature_fraction': 0.899280327535644, 'bagging_fraction': 0.7086868555982965, 'lambda_l2': 4.0297145734010185, 'learning_rate': 0.010127556334656073}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:16:28,319] Trial 13 finished with value: 0.7114062919988986 and parameters: {'num_leaves': 8, 'min_child_samples': 153, 'feature_fraction': 0.8864550600123169, 'bagging_fraction': 0.8122110475321596, 'lambda_l2': 1.2990132253334281, 'learning_rate': 0.02275690432260236}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:16:39,085] Trial 14 finished with value: 0.7110395219445492 and parameters: {'num_leaves': 9, 'min_child_samples': 145, 'feature_fraction': 0.8859647918800966, 'bagging_fraction': 0.8223972680035053, 'lambda_l2': 0.05237329361267769, 'learning_rate': 0.023892670846226968}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:16:53,231] Trial 15 finished with value: 0.7116695644691544 and parameters: {'num_leaves': 8, 'min_child_samples': 136, 'feature_fraction': 0.8568765348252038, 'bagging_fraction': 0.7882052274881677, 'lambda_l2': 1.0967318120403295, 'learning_rate': 0.019561246941004175}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:10,379] Trial 16 finished with value: 0.711020524173485 and parameters: {'num_leaves': 31, 'min_child_samples': 132, 'feature_fraction': 0.9418994768261855, 'bagging_fraction': 0.7924290221607019, 'lambda_l2': 0.01672783205794271, 'learning_rate': 0.015980540051245353}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:18,834] Trial 17 finished with value: 0.7093366208428333 and parameters: {'num_leaves': 86, 'min_child_samples': 174, 'feature_fraction': 0.848593563032916, 'bagging_fraction': 0.6382394062483372, 'lambda_l2': 0.0038082878373568354, 'learning_rate': 0.029506924796213793}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:25,810] Trial 18 finished with value: 0.7087986534145525 and parameters: {'num_leaves': 55, 'min_child_samples': 132, 'feature_fraction': 0.6602381051770723, 'bagging_fraction': 0.7778738125609815, 'lambda_l2': 0.001055721280765218, 'learning_rate': 0.04816944492139793}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:37,619] Trial 19 finished with value: 0.709001334893055 and parameters: {'num_leaves': 62, 'min_child_samples': 62, 'feature_fraction': 0.934990968985792, 'bagging_fraction': 0.515345306514881, 'lambda_l2': 0.08445502224517829, 'learning_rate': 0.01904539715289284}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:45,354] Trial 20 finished with value: 0.7101266064812077 and parameters: {'num_leaves': 35, 'min_child_samples': 185, 'feature_fraction': 0.8332678196538594, 'bagging_fraction': 0.677283208904524, 'lambda_l2': 1.2728199519935839, 'learning_rate': 0.03631040320811105}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:17:57,664] Trial 21 finished with value: 0.7112534158277068 and parameters: {'num_leaves': 12, 'min_child_samples': 140, 'feature_fraction': 0.8550154641924206, 'bagging_fraction': 0.8264438434713739, 'lambda_l2': 1.1993224491410062, 'learning_rate': 0.022408268770533014}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:18:16,792] Trial 22 finished with value: 0.7117199708409306 and parameters: {'num_leaves': 8, 'min_child_samples': 162, 'feature_fraction': 0.9290137760261167, 'bagging_fraction': 0.7549031056382711, 'lambda_l2': 0.5704385949114267, 'learning_rate': 0.013419073264910396}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:18:38,031] Trial 23 finished with value: 0.7114408332799429 and parameters: {'num_leaves': 23, 'min_child_samples': 169, 'feature_fraction': 0.9397997381394906, 'bagging_fraction': 0.7472831160985076, 'lambda_l2': 0.6020369838012003, 'learning_rate': 0.012822526938835213}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:19:00,502] Trial 24 finished with value: 0.7110182932798166 and parameters: {'num_leaves': 34, 'min_child_samples': 119, 'feature_fraction': 0.9987461663497316, 'bagging_fraction': 0.7656844700029255, 'lambda_l2': 9.814021112436302, 'learning_rate': 0.013535604755375406}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:19:15,821] Trial 25 finished with value: 0.7110398650637662 and parameters: {'num_leaves': 18, 'min_child_samples': 183, 'feature_fraction': 0.9450985658541349, 'bagging_fraction': 0.8637686313392079, 'lambda_l2': 0.11733032154342618, 'learning_rate': 0.017704685089591946}. Best is trial 2 with value: 0.7118649936206624.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:19:32,908] Trial 26 finished with value: 0.7121378485368172 and parameters: {'num_leaves': 9, 'min_child_samples': 162, 'feature_fraction': 0.8275567778998405, 'bagging_fraction': 0.6491900648324886, 'lambda_l2': 0.5475779669393702, 'learning_rate': 0.013684920224656807}. Best is trial 26 with value: 0.7121378485368172.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:19:47,338] Trial 27 finished with value: 0.7108414338547417 and parameters: {'num_leaves': 33, 'min_child_samples': 160, 'feature_fraction': 0.8049140676743851, 'bagging_fraction': 0.632373504884647, 'lambda_l2': 0.1507141712931943, 'learning_rate': 0.013184361805138317}. Best is trial 26 with value: 0.7121378485368172.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:19:56,846] Trial 28 finished with value: 0.7114023370769229 and parameters: {'num_leaves': 19, 'min_child_samples': 194, 'feature_fraction': 0.914065585759611, 'bagging_fraction': 0.5906939814516134, 'lambda_l2': 0.5376580088989329, 'learning_rate': 0.026343655168861557}. Best is trial 26 with value: 0.7121378485368172.
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[I 2026-11-26 16:20:12,711] Trial 29 finished with value: 0.7117811260790002 and parameters: {'num_leaves': 16, 'min_child_samples': 84, 'feature_fraction': 0.7552114583698312, 'bagging_fraction': 0.6653043523913722, 'lambda_l2': 0.038780291299714796, 'learning_rate': 0.014048460141998594}. Best is trial 26 with value: 0.7121378485368172.
+[T3] Tuned lightgbm: status=complete trials=30 mean_cv_auc=0.7121378485368172 elapsed=393.03s
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[T3] lgbm_native          fit_rows=210000 best_iter=1588 refit_rounds=1764 fit_s=  58.9 val_roc=0.7512 val_pr=0.4392
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[T3] lgbm_native_flags    fit_rows=210000 best_iter=1698 refit_rounds=1887 fit_s=  62.6 val_roc=0.7512 val_pr=0.4394
+/Users/jaswanth/Desktop/ml-project/ML_PROJECT/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2749: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+[T3] lgbm_imputed_flags   fit_rows=210000 best_iter=1312 refit_rounds=1458 fit_s=  53.4 val_roc=0.7509 val_pr=0.4387

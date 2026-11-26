@@ -1,0 +1,4 @@
+[T6-OOF] catboost fold=1 fit_rows=42000 oof_auc=0.6966 best_iter=422 (34.49s)
+[T6-OOF] catboost fold=2 fit_rows=84000 oof_auc=0.7122 best_iter=831 (100.51s)
+[T6-OOF] catboost fold=3 fit_rows=126000 oof_auc=0.7277 best_iter=1107 (171.47s)
+[T6-OOF] catboost fold=4 fit_rows=168000 oof_auc=0.7305 best_iter=1057 (224.63s)

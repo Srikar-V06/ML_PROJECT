@@ -1,0 +1,24 @@
+{
+  "family": "ensemble",
+  "factory": "avg_top3",
+  "fit_rows": 210000,
+  "best_iteration": null,
+  "refit_rounds": null,
+  "fit_seconds": 0.75,
+  "val_roc_auc": 0.7526524442484012,
+  "val_pr_auc": 0.44089519101621355,
+  "val_brier": 0.1394153828106517,
+  "val_log_loss": 0.43681113644542596,
+  "val_ece": 0.01928145254726804,
+  "val_ks": 0.37245647934538867,
+  "calibration_slope": 1.164951415144912,
+  "calibration_intercept": 0.3413223513152736,
+  "members": [
+    "xgb_hist",
+    "catboost",
+    "logreg_baseline"
+  ],
+  "model": "avg_top3",
+  "split": "val",
+  "timestamp": "20261126T115709Z"
+}
