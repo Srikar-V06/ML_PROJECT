@@ -1,0 +1,42 @@
+[
+  {
+    "base": "xgb_hist",
+    "fold": 1,
+    "fit_rows": 42000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.6973341483357389,
+    "best_iteration": 721,
+    "refit_rounds": 801,
+    "fit_seconds": 9.11
+  },
+  {
+    "base": "xgb_hist",
+    "fold": 2,
+    "fit_rows": 84000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7108334698969481,
+    "best_iteration": 771,
+    "refit_rounds": 857,
+    "fit_seconds": 15.41
+  },
+  {
+    "base": "xgb_hist",
+    "fold": 3,
+    "fit_rows": 126000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7281783320929427,
+    "best_iteration": 1401,
+    "refit_rounds": 1557,
+    "fit_seconds": 37.29
+  },
+  {
+    "base": "xgb_hist",
+    "fold": 4,
+    "fit_rows": 168000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7285956343269571,
+    "best_iteration": 1086,
+    "refit_rounds": 1207,
+    "fit_seconds": 30.6
+  }
+]

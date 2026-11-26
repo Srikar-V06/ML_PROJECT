@@ -1,0 +1,19 @@
+{
+  "family": "lightgbm",
+  "status": "complete",
+  "completed_trials": 30,
+  "warm_started": true,
+  "source": "optuna_p3",
+  "best_mean_auc": 0.7121378485368172,
+  "params_json": "{\"bagging_fraction\": 0.6491900648324886, \"feature_fraction\": 0.8275567778998405, \"lambda_l2\": 0.5475779669393702, \"learning_rate\": 0.013684920224656807, \"min_child_samples\": 162, \"num_leaves\": 9}",
+  "elapsed_seconds": 393.03,
+  "params": {
+    "num_leaves": 9,
+    "min_child_samples": 162,
+    "feature_fraction": 0.8275567778998405,
+    "bagging_fraction": 0.6491900648324886,
+    "lambda_l2": 0.5475779669393702,
+    "learning_rate": 0.013684920224656807
+  },
+  "fit_row_limit": 25000
+}

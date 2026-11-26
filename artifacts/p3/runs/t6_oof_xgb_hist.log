@@ -1,0 +1,4 @@
+[T6-OOF] xgb_hist fold=1 fit_rows=42000 oof_auc=0.6973 best_iter=721 (9.11s)
+[T6-OOF] xgb_hist fold=2 fit_rows=84000 oof_auc=0.7108 best_iter=771 (15.41s)
+[T6-OOF] xgb_hist fold=3 fit_rows=126000 oof_auc=0.7282 best_iter=1401 (37.29s)
+[T6-OOF] xgb_hist fold=4 fit_rows=168000 oof_auc=0.7286 best_iter=1086 (30.6s)

@@ -1,0 +1,16 @@
+{
+  "family": "catboost",
+  "status": "partial_timeout",
+  "completed_trials": 25,
+  "warm_started": true,
+  "source": "optuna_p3",
+  "best_mean_auc": 0.7130512285165201,
+  "params_json": "{\"depth\": 7, \"l2_leaf_reg\": 17.62856351606882, \"learning_rate\": 0.01672664000836273}",
+  "elapsed_seconds": 1518.53,
+  "params": {
+    "depth": 7,
+    "l2_leaf_reg": 17.62856351606882,
+    "learning_rate": 0.01672664000836273
+  },
+  "fit_row_limit": 25000
+}

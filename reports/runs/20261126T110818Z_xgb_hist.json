@@ -1,0 +1,30 @@
+{
+  "family": "xgboost",
+  "factory": "xgb_hist",
+  "params": {
+    "max_depth": 3,
+    "min_child_weight": 36.48465846750265,
+    "subsample": 0.6409401482918363,
+    "colsample_bytree": 0.7710207099882341,
+    "reg_lambda": 9.435287989221436,
+    "learning_rate": 0.013715240823855477
+  },
+  "best_iteration": 1704,
+  "refit_rounds": 1893,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000,
+  "fit_seconds": 115.13,
+  "val_roc_auc": 0.7517287691705671,
+  "val_pr_auc": 0.4400981724054275,
+  "val_brier": 0.13970526493534288,
+  "val_log_loss": 0.4375591174805212,
+  "val_ece": 0.022067408399873725,
+  "val_ks": 0.36820780622124516,
+  "calibration_slope": 1.1384333200142263,
+  "calibration_intercept": 0.34173956365308583,
+  "model": "xgb_hist",
+  "split": "val",
+  "timestamp": "20261126T110818Z"
+}

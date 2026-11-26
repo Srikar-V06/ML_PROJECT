@@ -1,0 +1,10 @@
+[T4] Selected top-2 families by Val PR AUC: [('xgboost', 'xgb_hist', 'xgb_hist'), ('catboost', 'catboost', 'catboost_native')]
+[T4] xgboost_imb_none             pr=0.4401 roc=0.7517 brier=0.1397 ece=0.0221 mean_p=0.1801 (73.4s)
+[T4] xgboost_imb_class_weights    pr=0.4405 roc=0.7515 brier=0.2048 ece=0.2470 mean_p=0.4490 (67.5s)
+[T4] xgboost_imb_undersample      pr=0.4367 roc=0.7501 brier=0.2063 ece=0.2490 mean_p=0.4510 (36.0s)
+[T4] xgboost_imb_smote            pr=0.4350 roc=0.7498 brier=0.1397 ece=0.0154 mean_p=0.1902 (263.4s)
+[T4] catboost_imb_none            pr=0.4400 roc=0.7529 brier=0.1392 ece=0.0180 mean_p=0.1840 (398.6s)
+[T4] catboost_imb_class_weights   pr=0.4406 roc=0.7522 brier=0.2065 ece=0.2496 mean_p=0.4516 (408.5s)
+[T4] catboost_imb_undersample     pr=0.4365 roc=0.7507 brier=0.2089 ece=0.2547 mean_p=0.4567 (90.2s)
+[T4] catboost_imb_smote           pr=0.4359 roc=0.7518 brier=0.1393 ece=0.0141 mean_p=0.1901 (401.8s)
+[T4] Saved artifacts/p3/tables/imbalance_study.csv and imbalance_study.png

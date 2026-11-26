@@ -1,0 +1,14 @@
+[T3] Starting Optuna tuning for gradient_boosting (trials=30, timeout=1500s)...
+[I 2026-11-26 16:26:38,260] A new study created in RDB with name: p3-gradient_boosting-6ba0d7b4f792-42-25000
+[I 2026-11-26 16:29:10,387] Trial 0 finished with value: 0.7079378663302929 and parameters: {'max_depth': 2, 'min_samples_leaf': 81, 'subsample': 0.9802857225639665, 'learning_rate': 0.0286449874364605}. Best is trial 0 with value: 0.7079378663302929.
+[I 2026-11-26 16:32:44,325] Trial 1 finished with value: 0.7099759679573837 and parameters: {'max_depth': 5, 'min_samples_leaf': 124, 'subsample': 0.6624074561769746, 'learning_rate': 0.015957084694148364}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:34:45,740] Trial 2 finished with value: 0.70995591907131 and parameters: {'max_depth': 2, 'min_samples_leaf': 175, 'subsample': 0.8404460046972835, 'learning_rate': 0.08341106432362087}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:37:01,659] Trial 3 finished with value: 0.7065228902690367 and parameters: {'max_depth': 2, 'min_samples_leaf': 195, 'subsample': 0.9329770563201687, 'learning_rate': 0.018891200276189398}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:38:48,325] Trial 4 finished with value: 0.7093556183806126 and parameters: {'max_depth': 2, 'min_samples_leaf': 45, 'subsample': 0.721696897183815, 'learning_rate': 0.048164145309070844}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:42:14,089] Trial 5 finished with value: 0.7088286643930496 and parameters: {'max_depth': 4, 'min_samples_leaf': 65, 'subsample': 0.8447411578889518, 'learning_rate': 0.01518747922672247}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:44:33,015] Trial 6 finished with value: 0.7083398501126361 and parameters: {'max_depth': 3, 'min_samples_leaf': 79, 'subsample': 0.7824279936868144, 'learning_rate': 0.10508421338691762}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:46:21,721] Trial 7 finished with value: 0.7037516202898966 and parameters: {'max_depth': 2, 'min_samples_leaf': 108, 'subsample': 0.836965827544817, 'learning_rate': 0.011492999300221412}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:49:01,524] Trial 8 finished with value: 0.7018262925928789 and parameters: {'max_depth': 5, 'min_samples_leaf': 42, 'subsample': 0.6260206371941118, 'learning_rate': 0.17160445029754812}. Best is trial 1 with value: 0.7099759679573837.
+[I 2026-11-26 16:53:01,702] Trial 9 finished with value: 0.7097892533556943 and parameters: {'max_depth': 6, 'min_samples_leaf': 164, 'subsample': 0.7218455076693483, 'learning_rate': 0.013399060561509796}. Best is trial 1 with value: 0.7099759679573837.
+[T3] Tuned gradient_boosting: status=partial_timeout trials=10 mean_cv_auc=0.7099759679573837 elapsed=1585.46s
+[T3] gb_classic           fit_rows= 50000 best_iter= 283 refit_rounds= 314 fit_s= 224.8 val_roc=0.7471 val_pr=0.4310

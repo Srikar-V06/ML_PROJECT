@@ -1,0 +1,28 @@
+{
+  "family": "gradient_boosting",
+  "factory": "gb_classic_50k",
+  "params": {
+    "max_depth": 5,
+    "min_samples_leaf": 124,
+    "subsample": 0.6624074561769746,
+    "learning_rate": 0.015957084694148364
+  },
+  "best_iteration": 283,
+  "refit_rounds": 314,
+  "tail_fraction": 0.1,
+  "fit_rows": 50000,
+  "probe_fit_rows": 45000,
+  "probe_tail_rows": 5000,
+  "fit_seconds": 224.79,
+  "val_roc_auc": 0.7470913003562778,
+  "val_pr_auc": 0.43098523067812855,
+  "val_brier": 0.14097923525212336,
+  "val_log_loss": 0.44157129739950746,
+  "val_ece": 0.028411873581353324,
+  "val_ks": 0.36305870285501457,
+  "calibration_slope": 1.142942136800781,
+  "calibration_intercept": 0.3828612387960067,
+  "model": "gb_classic",
+  "split": "val",
+  "timestamp": "20261126T112647Z"
+}

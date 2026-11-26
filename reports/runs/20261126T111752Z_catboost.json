@@ -1,0 +1,27 @@
+{
+  "family": "catboost",
+  "factory": "catboost_native",
+  "params": {
+    "depth": 7,
+    "l2_leaf_reg": 17.62856351606882,
+    "learning_rate": 0.01672664000836273
+  },
+  "best_iteration": 1394,
+  "refit_rounds": 1549,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000,
+  "fit_seconds": 533.66,
+  "val_roc_auc": 0.7528986305580914,
+  "val_pr_auc": 0.43999769844366093,
+  "val_brier": 0.13918426387743182,
+  "val_log_loss": 0.43620373097277926,
+  "val_ece": 0.01801349840764877,
+  "val_ks": 0.3714947706059012,
+  "calibration_slope": 1.1143908282564374,
+  "calibration_intercept": 0.27797561081589733,
+  "model": "catboost",
+  "split": "val",
+  "timestamp": "20261126T111752Z"
+}

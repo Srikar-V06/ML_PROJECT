@@ -1,0 +1,92 @@
+{
+  "model": "lgbm_monotone",
+  "split": "val",
+  "rows": 45000,
+  "roc_auc": 0.7502081365632354,
+  "pr_auc": 0.4366282745929991,
+  "brier": 0.14023058316746498,
+  "ks": 0.36526049156519297,
+  "log_loss": 0.43895892262343456,
+  "ece": 0.025461924648033766,
+  "calibration_slope": 1.1313976585324648,
+  "calibration_intercept": 0.3603119001239623,
+  "ci95": {
+    "roc_auc": [
+      0.7450575942102502,
+      0.7556154337902723
+    ],
+    "pr_auc": [
+      0.4268777274933168,
+      0.44813119834564763
+    ],
+    "brier": [
+      0.13824862292128184,
+      0.1421233456814823
+    ],
+    "ks": [
+      0.3569125035361824,
+      0.37712502370771717
+    ]
+  },
+  "thresholds": {
+    "5.0": 0.14551143385102241,
+    "10.0": 0.09017563520355222,
+    "15.0": 0.06071277316052819
+  },
+  "cost_per_1000": {
+    "5.0": {
+      "threshold": 0.14551143385102241,
+      "optimized": 560.9333333333333,
+      "naive_050": 951.8888888888889,
+      "approve_all": 1009.8888888888889,
+      "approval_rate": 0.5037555555555555
+    },
+    "10.0": {
+      "threshold": 0.09017563520355222,
+      "optimized": 686.3333333333334,
+      "naive_050": 1896.888888888889,
+      "approve_all": 2019.7777777777778,
+      "approval_rate": 0.2806
+    },
+    "15.0": {
+      "threshold": 0.06071277316052819,
+      "optimized": 735.2888888888889,
+      "naive_050": 2841.8888888888887,
+      "approve_all": 3029.6666666666665,
+      "approval_rate": 0.15055555555555555
+    }
+  },
+  "family": "lightgbm_monotone",
+  "factory": "lgbm_monotone",
+  "params": {
+    "num_leaves": 9,
+    "min_child_samples": 162,
+    "feature_fraction": 0.8275567778998405,
+    "bagging_fraction": 0.6491900648324886,
+    "lambda_l2": 0.5475779669393702,
+    "learning_rate": 0.013684920224656807
+  },
+  "monotone_signs": {
+    "dti": 1,
+    "int_rate": 1,
+    "revol_util": 1,
+    "loan_to_income": 1,
+    "payment_to_income": 1,
+    "fico_range_low": -1,
+    "annual_inc": -1
+  },
+  "constrained_columns": 7,
+  "best_iteration": 1297,
+  "refit_rounds": 1441,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000,
+  "fit_seconds": 46.67,
+  "val_roc_auc": 0.7502081365632354,
+  "val_pr_auc": 0.4366282745929991,
+  "val_brier": 0.14023058316746498,
+  "val_log_loss": 0.43895892262343456,
+  "val_ece": 0.025461924648033766,
+  "val_ks": 0.36526049156519297
+}

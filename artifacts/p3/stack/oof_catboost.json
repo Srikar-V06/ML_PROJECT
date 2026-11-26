@@ -1,0 +1,42 @@
+[
+  {
+    "base": "catboost",
+    "fold": 1,
+    "fit_rows": 42000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.69663673895483,
+    "best_iteration": 422,
+    "refit_rounds": 469,
+    "fit_seconds": 34.49
+  },
+  {
+    "base": "catboost",
+    "fold": 2,
+    "fit_rows": 84000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7122313884810962,
+    "best_iteration": 831,
+    "refit_rounds": 923,
+    "fit_seconds": 100.51
+  },
+  {
+    "base": "catboost",
+    "fold": 3,
+    "fit_rows": 126000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7276774155732851,
+    "best_iteration": 1107,
+    "refit_rounds": 1230,
+    "fit_seconds": 171.47
+  },
+  {
+    "base": "catboost",
+    "fold": 4,
+    "fit_rows": 168000,
+    "oof_rows": 42000,
+    "oof_roc_auc": 0.7304563808459,
+    "best_iteration": 1057,
+    "refit_rounds": 1174,
+    "fit_seconds": 224.63
+  }
+]

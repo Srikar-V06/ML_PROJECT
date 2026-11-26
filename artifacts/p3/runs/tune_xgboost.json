@@ -1,0 +1,19 @@
+{
+  "family": "xgboost",
+  "status": "complete",
+  "completed_trials": 30,
+  "warm_started": true,
+  "source": "optuna_p3",
+  "best_mean_auc": 0.7123902922090668,
+  "params_json": "{\"colsample_bytree\": 0.7710207099882341, \"learning_rate\": 0.013715240823855477, \"max_depth\": 3, \"min_child_weight\": 36.48465846750265, \"reg_lambda\": 9.435287989221436, \"subsample\": 0.6409401482918363}",
+  "elapsed_seconds": 1362.42,
+  "params": {
+    "max_depth": 3,
+    "min_child_weight": 36.48465846750265,
+    "subsample": 0.6409401482918363,
+    "colsample_bytree": 0.7710207099882341,
+    "reg_lambda": 9.435287989221436,
+    "learning_rate": 0.013715240823855477
+  },
+  "fit_row_limit": 25000
+}
