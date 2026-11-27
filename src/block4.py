@@ -163,8 +163,9 @@ def calibration_final(cfg):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config/base.yaml")
-    parser.add_argument("--stage", choices=["calibration"], default="calibration")
+    parser.add_argument("--stage", choices=["calibration", "shap"], default="calibration")
     parser.add_argument("--models", nargs="*", default=None)
+    parser.add_argument("--sample", type=int, default=5000, help="Validation rows for SHAP")
     parser.add_argument("--final", action="store_true", help="one-shot Test read-out (writes the lock)")
     args = parser.parse_args()
     cfg = config(args.config)
@@ -179,6 +180,13 @@ def main():
                     "bayes_cost_10", "tuned_cost_10", "bayes_thr_10", "tuned_thr_10"]
             print(table[cols].to_string(index=False, float_format=lambda v: f"{v:.4f}"))
             print("selected:", selected)
+    elif args.stage == "shap":
+        from src.analysis.block4_shap import run as run_shap
+        imp, rho, checks, mono = run_shap(cfg, sample=args.sample)
+        print(checks.to_string(index=False))
+        print(imp.rank(ascending=False).sort_values("stack_lr").head(12).astype(int).to_string())
+        print(rho.round(3).to_string())
+        print(pd.DataFrame(mono).pivot(index="field", columns="model", values="spearman_value_vs_shap").round(3))
 
 
 if __name__ == "__main__":

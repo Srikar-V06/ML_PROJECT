@@ -1,0 +1,9 @@
+model,max_additivity_error
+xgb_hist,8.821487426757812e-06
+catboost,1.4210854715202004e-14
+lgbm_native_flags,1.9539925233402755e-14
+lgbm_monotone,1.1546319456101628e-14
+stack_lr/xgb_hist,8.821487426757812e-06
+stack_lr/catboost,1.4210854715202004e-14
+stack_lr/logreg_baseline,1.887379141862766e-15
+stack_lr,1.5696960269373506e-06

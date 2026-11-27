@@ -59,6 +59,20 @@ def test_summary_reports_bayes_and_tuned_costs():
     assert row["cal_slope"] == pytest.approx(1.0, abs=0.08)
 
 
+def test_shap_field_mapping_and_additive_aggregation():
+    from src.analysis.block4_shap import aggregate, field_of
+    fields = ["grade", "sub_grade", "emp_length", "int_rate", "loan_to_income"]
+    assert field_of("category__sub_grade_B3", fields) == "sub_grade"  # longest prefix wins over "grade"
+    assert field_of("category__grade_B", fields) == "grade"
+    assert field_of("missing__missingindicator_emp_length", fields) == "emp_length"
+    assert field_of("numeric__loan_to_income", fields) == "loan_to_income"
+    assert field_of("int_rate", fields) == "int_rate"  # CatBoost native names have no prefix
+    names = ["numeric__int_rate", "category__grade_A", "category__grade_B", "missing__missingindicator_emp_length"]
+    values = np.arange(8, dtype=float).reshape(2, 4)
+    agg = aggregate(values, names, fields)
+    assert agg.loc[0, "grade"] == 3.0 and np.allclose(agg.sum(axis=1), values.sum(axis=1))
+
+
 @pytest.mark.skipif(block4.LOCK.exists(), reason="Test read-out already locked")
 def test_test_predictions_blocked_before_lock():
     with pytest.raises(RuntimeError):

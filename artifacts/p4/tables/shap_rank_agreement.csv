@@ -1,0 +1,6 @@
+,xgb_hist,catboost,lgbm_native_flags,lgbm_monotone,stack_lr
+xgb_hist,1.0,0.953,0.9827,0.9812,0.9184
+catboost,0.953,1.0,0.9615,0.9532,0.9349
+lgbm_native_flags,0.9827,0.9615,1.0,0.9919,0.9414
+lgbm_monotone,0.9812,0.9532,0.9919,1.0,0.9174
+stack_lr,0.9184,0.9349,0.9414,0.9174,1.0

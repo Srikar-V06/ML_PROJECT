@@ -1,0 +1,15 @@
+field,expected_sign,model,spearman_value_vs_shap,sign_ok
+dti,1,lgbm_native_flags,0.9706442552598056,True
+dti,1,lgbm_monotone,0.9776341686487017,True
+int_rate,1,lgbm_native_flags,0.9913063444849857,True
+int_rate,1,lgbm_monotone,0.9936004912397322,True
+revol_util,1,lgbm_native_flags,0.8186087111851014,True
+revol_util,1,lgbm_monotone,0.9251724917680182,True
+loan_to_income,1,lgbm_native_flags,0.959778883678945,True
+loan_to_income,1,lgbm_monotone,0.9630265576113757,True
+payment_to_income,1,lgbm_native_flags,0.9324817715787893,True
+payment_to_income,1,lgbm_monotone,0.9617446133287609,True
+fico_range_low,-1,lgbm_native_flags,-0.9510633363489097,True
+fico_range_low,-1,lgbm_monotone,-0.9549523542524104,True
+annual_inc,-1,lgbm_native_flags,-0.884015347398474,True
+annual_inc,-1,lgbm_monotone,-0.948266828455778,True
