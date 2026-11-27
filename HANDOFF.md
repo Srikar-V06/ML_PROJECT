@@ -89,3 +89,39 @@ p_val = champ.predict_proba(X_val)[:, 1]
 - **Processed Inputs:** `data/processed/p1p2_300k/sample.parquet` (`sha256: f0d05645…adbf`), `data/processed/p1p2_300k/audit.parquet`, `artifacts/p1p2_300k/feature_audit.csv` (50 `keep` origination fields), `artifacts/p1p2_300k/missing_value_table.csv`.
 - **P1/P2 Saved Pipelines:** 4 baselines in `artifacts/p1p2_300k/models/` (`constant`, `grade_only`, `logreg_baseline`, `woe_scorecard`) and 17 classical/PCA pipelines in `artifacts/p1p2_300k/block2/models/`.
 - **Prosper Transfer Prep (for P5):** `data/processed/p1p2_300k/prosper_common.parquet` and `artifacts/p1p2_300k/tables/prosper_feature_mapping.csv` (17 mapped underwriting fields).
+
+---
+
+# Handoff to P5 (from P4 — Block 4: Calibration, Analyses A / D / F)
+
+**Status:** Block 4 is complete. Every analysis was developed on Train and Validation only. The single Test read-out was locked by `artifacts/p4/calibration_lock.json` (commit `a8d6532`, `2026-11-27T13:25Z`) **before** P3's saved Test probabilities were transformed once. No model re-scored Test, and `artifacts/p3/**` and `artifacts/p1p2_300k/predictions/` are byte-identical to the Block 3 freeze. Full write-up: `artifacts/p4/report_block4.md`; viva answers: `docs/viva_qa.md` (Block 4 section).
+
+> **GUARDRAILS FOR P5 (in addition to P3's two above):**
+> 1. **Do NOT delete `artifacts/p4/calibration_lock.json` or re-run `python -m src.block4 --stage calibration --final` / `--stage temporal --final`.** Both refuse to run twice. `tests/test_block4.py::test_p4_lock_matches_test_predictions` checks the lock against P3's Test files on every `pytest` run.
+> 2. Write P5 outputs to `artifacts/p5/`. Every Block 4 stage except `--final` is safe to re-run; the ablation caches each arm in `artifacts/p4/ablation/`.
+
+## 1. Environment notes
+- macOS: `brew install libomp`; otherwise LightGBM fails to import (`Library not loaded: @rpath/libomp.dylib`).
+- `shap==0.51.0` and its dependencies are now pinned in `requirements.txt`.
+- `config/base.yaml` expects `data/processed/p1p2_300k/`. If your local copy is in `data/preprocessed/`, create a local symlink (`ln -s preprocessed data/processed`); do not commit it.
+
+## 2. Block 4 artifacts
+
+| Deliverable | Code | Key outputs |
+|---|---|---|
+| **Step 10 — Calibration** | `src/evaluation/calibration.py`, `src/block4.py` | `artifacts/p4/tables/calibration_{val,test}.csv`, `artifacts/p4/tables/cost_savings.csv`, `artifacts/p4/calibration/<model>_<method>.joblib` (`.transform(p)`), `artifacts/p4/plots/reliability_{val,test}_*.png` |
+| **Analysis A — Ablation** | `src/analysis/block4_ablation.py` | `artifacts/p4/tables/ablation.csv`, `artifacts/p4/plots/ablation.png`, `artifacts/p4/ablation/<arm>_val.parquet` |
+| **Analysis D — Stability & sensitivity** | `src/analysis/block4_sensitivity.py` | `artifacts/p4/tables/temporal_stability_{val,test}.csv`, `artifacts/p4/tables/feature_psi_{val,test}.csv`, `artifacts/p4/tables/score_psi_{val,test}.csv`, `artifacts/p4/tables/sensitivity.csv` |
+| **Analysis F — SHAP** | `src/analysis/block4_shap.py` | `artifacts/p4/tables/shap_importance.csv`, `artifacts/p4/tables/shap_local.csv`, `artifacts/p4/tables/shap_monotone_check.csv`, `artifacts/p4/tables/shap_additivity.csv`, `artifacts/p4/plots/shap_*.png` |
+
+**Reusable functions:**
+- `calibration.Platt` / `Isotonic` / `cross_fit` / `summary` / `bayes_thresholds`
+- `block4_sensitivity.inject_missing` / `gaussian_noise` / `rate_shock` / `psi`
+- `block4_shap.explain(pipe, X, fields)`, which returns field-level SHAP in log-odds for any P3 tree pipeline or the logistic baseline
+
+## 3. Findings P5 should carry into the Prosper transfer study
+1. **Recalibrate on the target platform before using cost cutoffs.** Ranking transfers far better than calibration: the 2–3 pp shift in Lending Club's own default rate already biased every standalone booster (Test intercept +0.28 to +0.34, ECE 0.024–0.029). A Platt map fitted on a labelled Prosper slice is cheap and fixed the Lending Club boosters (ECE −65% to −68%). Report transfer ROC-AUC and PR-AUC raw, and Brier, ECE, and cost both raw and after target-platform Platt scaling.
+2. **Pricing fields carry most of the signal.** Affordability fields (`loan_amnt`, `term`, `installment`, `int_rate`, `annual_inc`, `dti`) are the most valuable group (−0.0214 ROC-AUC when dropped), and LC `grade` is redundant with `int_rate`. Platform-specific risk grades (Prosper rating vs LC grade) and rates set by different pricing policies are the main transfer risk; check how `artifacts/p1p2_300k/tables/prosper_feature_mapping.csv` maps them before trusting a transferred model.
+3. **Missing-value handling will not transfer as-is.** LC bureau fields were unreported before 2012, and `xgb_hist` learned NaN as a risk signal (approvals halve when 20% of values are blanked). Fields that are missing on Prosper for a different reason will be misread. Prefer models refit on the 17-field common representation (`data/processed/p1p2_300k/prosper_common.parquet`) over scoring Prosper with the 50-field LC pipelines.
+4. **Avoid `logreg_baseline` as a transfer baseline when both `int_rate` and a grade are inputs.** Its `int_rate` coefficient is negative given `sub_grade` (−0.32), so its decisions move the wrong way under rate shifts.
+5. **The Champion can be explained exactly.** If P5 needs explanations of transferred stacks, a logistic meta-learner on member logits makes the weighted member SHAP an exact attribution (see `src/analysis/block4_shap.py`).
