@@ -24,3 +24,4 @@ artifacts/p1p2_300k/plots/constant_*.png
 artifacts/p1p2_300k/plots/grade_only_*.png
 artifacts/p1p2_300k/plots/logreg_baseline_*.png
 artifacts/p1p2_300k/plots/woe_scorecard_*.png
+!artifacts/p4/tables/*.csv

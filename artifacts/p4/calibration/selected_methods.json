@@ -1,0 +1,8 @@
+{
+  "catboost": "platt",
+  "stack_lr": "platt",
+  "xgb_hist": "platt",
+  "lgbm_native_flags": "platt",
+  "adaboost": "isotonic",
+  "catboost_imb_class_weights": "platt"
+}
