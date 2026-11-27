@@ -88,3 +88,21 @@
 
 9. **Why does a tiny amount of noise on `term` cost `xgb_hist` 0.012 ROC-AUC but LightGBM nothing?**
    `term` only takes the values 36 and 60. XGBoost's hist method places all 340 of its `term` splits at `term < 60`, while LightGBM's 372 splits sit at the midpoint, `48`. A 60-month loan whose value wobbles slightly below 60 is routed as a 36-month loan by XGBoost only. Noise on a two-valued field is not a meaningful perturbation, so the main noise study excludes fields with ≤ 10 levels and this case is reported separately as a deployment risk. Encoding `term` as a categorical or binary field removes it.
+
+
+## Block 5
+
+1. **How do you derive the cost-optimal threshold $t^* = C_{\text{FP}} / (C_{\text{FP}} + C_{\text{FN}})$, and what did your data-driven cost ratio show?**
+   Approving an applicant with calibrated default probability $p$ yields expected loss $p \cdot C_{\text{FN}}$ versus declining a creditworthy applicant with expected opportunity cost $(1 - p) \cdot C_{\text{FP}}$. Approving is optimal iff $p \cdot C_{\text{FN}} < (1 - p) \cdot C_{\text{FP}} \iff p < C_{\text{FP}} / (C_{\text{FP}} + C_{\text{FN}}) = 1 / (1 + R)$ where $R = C_{\text{FN}} / C_{\text{FP}}$. From `210,000` Train loans (`artifacts/p5/tables/cost_data_driven.csv`), mean LGD on charged-off loans is `55.80%` and net interest margin on paid loans is `15.33%` (`19.33%` gross minus `4.00%` funding cost), giving $R = 3.64 : 1$ and $t^* = 0.2155$. On Test (`45,000` loans), `stack_lr` at $t^* = 0.2155$ lifts net profit from **\$4.68** (`approve_all`) to **\$641.61/applicant**.
+
+2. **What is reject inference bias, and why does it matter for this model?**
+   Lending Club's dataset only records outcomes for *approved* borrowers; rejected applicants never received loans, so their counterfactual default rate is unobserved. Our model is therefore trained and validated on the already-screened LC population, and applying it directly to a broader, unscreened applicant pool introduces selection shift.
+
+3. **What did Analysis E reveal about False Negatives (approved defaulters)?**
+   At the `10:1` cutoff (`0.0909`), `stack_lr`'s `616` False Negatives have `mean FICO = 711.0`, `DTI = 15.9%`, `int_rate = 8.08%`, and `annual_inc = \$105.1k` — virtually identical at origination to True Negatives (`FICO = 718.4`, `DTI = 15.6%`, `int_rate = 7.64%`; `artifacts/p5/tables/error_profiles.csv`). Moreover, `484` of `8,959` Test defaults are missed by *all five* models (`error_fn_overlap.csv`), showing that these errors reflect unobserved post-origination shocks (job loss, illness) rather than model capacity.
+
+4. **How did you audit and mitigate fairness without race or sex columns, and what was the trade-off?**
+   Because Lending Club omits race/sex and `zip_code` was excluded per ECOA, we audited `stack_lr` across US Census `region`, `home_ownership`, `income_band`, and `emp_length_missing` (`artifacts/p5/tables/fairness_audit.csv`). Regional approval (`26.0%–27.0%`) and equalized-odds gaps (`1.46 pp`) are balanced, whereas `income_band` shows a `32.3 pp` EO gap driven by base default-rate differences (`22.6%` in Q1 vs `16.4%` in Q4). Applying `fairlearn.ThresholdOptimizer(constraints="equalized_odds")` on Validation cut the Test income EO gap from `32.3 pp → 3.8 pp`, at a 10:1 cost increase from `689.0` to `1,042.2` per 1k (`fairness_mitigation.csv`).
+
+5. **Why did models lose AUC when transferred zero-shot to Prosper, and why did Platt scaling help?**
+   Prosper (`44,320` loans) has a `32.7%` default rate vs `17.7%` in LC Train, and different underwriting/rating definitions (including `ProsperRating` actually *lowered* `lgbm` zero-shot ROC-AUC from `0.6634` to `0.6485`). On the `16` aligned common features (`artifacts/p5/tables/cross_lender.csv`), `logreg` transferred best in ranking (`0.6738` ROC-AUC), while target-platform Platt scaling on an `8,864`-row Prosper calibration slice cut ECE by `41–64%` (`catboost` `0.1087 → 0.0395`) and reduced 10:1 cost by `30–90` per 1k.

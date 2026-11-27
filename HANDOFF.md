@@ -125,3 +125,22 @@ p_val = champ.predict_proba(X_val)[:, 1]
 3. **Missing-value handling will not transfer as-is.** LC bureau fields were unreported before 2012, and `xgb_hist` learned NaN as a risk signal (approvals halve when 20% of values are blanked). Fields that are missing on Prosper for a different reason will be misread. Prefer models refit on the 17-field common representation (`data/processed/p1p2_300k/prosper_common.parquet`) over scoring Prosper with the 50-field LC pipelines.
 4. **Avoid `logreg_baseline` as a transfer baseline when both `int_rate` and a grade are inputs.** Its `int_rate` coefficient is negative given `sub_grade` (−0.32), so its decisions move the wrong way under rate shifts.
 5. **The Champion can be explained exactly.** If P5 needs explanations of transferred stacks, a logistic meta-learner on member logits makes the weighted member SHAP an exact attribution (see `src/analysis/block4_shap.py`).
+
+
+---
+
+# Block 5 Completion Summary (P5 — Business ML, Fairness, Cross-Lender & UI)
+
+**Status:** All Block 5 core ML, memo, UI/API, Docker, and test deliverables are complete. P3 (`artifacts/p3/test_lock.json`) and P4 (`artifacts/p4/calibration_lock.json`) locks remain intact and unmodified. All Block 5 analyses reproduce via `python -m src.block5 --stage all`.
+
+## Block 5 Artifacts (`artifacts/p5/`, `reports/`, `app/`)
+
+| Deliverable | Code | Key Outputs |
+|---|---|---|
+| **Cost-Sensitive Study** | `src/analysis/block5_cost.py` | `artifacts/p5/tables/cost_data_driven.{csv,json}`, `cost_policies_test.csv`, `cost_sensitivity.csv`, `plots/cost_{policies,sensitivity}.png` |
+| **Analysis E & Analysis B** | `src/analysis/block5_errors.py` | `artifacts/p5/tables/error_{profiles,by_segment,fn_overlap,hardest_examples,by_confidence}.csv`, `prediction_by_{grade,vintage}.csv`, `confusion_matrices.csv`, 7 plots in `artifacts/p5/plots/` |
+| **Fairness Audit & Mitigation** | `src/analysis/block5_fairness.py` | `artifacts/p5/tables/fairness_{audit,mitigation}.csv`, `plots/fairness_{groups,mitigation}.png` |
+| **Cross-Lender (Prosper)** | `src/analysis/block5_cross_lender.py` | `artifacts/p5/tables/cross_lender.csv`, `plots/cross_lender.png` |
+| **Memo to Head of Risk** | — | `reports/memo_head_of_risk.md` |
+| **Streamlit UI & FastAPI** | `app/app.py`, `app/scoring.py`, `app/api.py`, `Dockerfile` | 5-page UI + `/predict` & `/health` REST API + container build; smoke-tested via `tests/test_app_smoke.py` and `tests/test_block5.py` |
+| **Report, Slides & Viva** | `artifacts/p5/report_block5.md`, `docs/viva_qa.md` | Metric-backed report sections, 3 slide outlines, and Block 5 Viva Q&A |

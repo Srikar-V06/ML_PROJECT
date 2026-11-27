@@ -26,3 +26,6 @@ artifacts/p1p2_300k/plots/logreg_baseline_*.png
 artifacts/p1p2_300k/plots/woe_scorecard_*.png
 !artifacts/p4/tables/*.csv
 !artifacts/p4/ablation/*.parquet
+
+catboost_info/
+!artifacts/p5/tables/*.csv
