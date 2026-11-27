@@ -1,0 +1,24 @@
+{
+  "arm": "full",
+  "dropped": [],
+  "engineered_ratios": [
+    "loan_to_income",
+    "payment_to_income",
+    "revolving_to_income",
+    "open_account_share"
+  ],
+  "n_raw_inputs": 50,
+  "n_model_inputs": 137,
+  "n_flags": 24,
+  "val_roc_auc": 0.7517287691705671,
+  "val_pr_auc": 0.4400981724054275,
+  "val_brier": 0.13970526493534288,
+  "val_ks": 0.36820780622124516,
+  "fit_seconds": 44.9,
+  "best_iteration": 1704,
+  "refit_rounds": 1893,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000
+}

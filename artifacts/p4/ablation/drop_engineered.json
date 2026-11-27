@@ -1,0 +1,19 @@
+{
+  "arm": "drop_engineered",
+  "dropped": [],
+  "engineered_ratios": [],
+  "n_raw_inputs": 50,
+  "n_model_inputs": 133,
+  "n_flags": 24,
+  "val_roc_auc": 0.7516455111751241,
+  "val_pr_auc": 0.439737088497639,
+  "val_brier": 0.13971338362048893,
+  "val_ks": 0.37168065882512896,
+  "fit_seconds": 50.5,
+  "best_iteration": 1844,
+  "refit_rounds": 2049,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000
+}

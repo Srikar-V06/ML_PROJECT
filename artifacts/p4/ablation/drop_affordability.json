@@ -1,0 +1,28 @@
+{
+  "arm": "drop_affordability",
+  "dropped": [
+    "annual_inc",
+    "dti",
+    "installment",
+    "int_rate",
+    "loan_amnt",
+    "term"
+  ],
+  "engineered_ratios": [
+    "open_account_share"
+  ],
+  "n_raw_inputs": 44,
+  "n_model_inputs": 128,
+  "n_flags": 24,
+  "val_roc_auc": 0.7303449066399681,
+  "val_pr_auc": 0.3976673567055621,
+  "val_brier": 0.14432329172299277,
+  "val_ks": 0.3373319730718121,
+  "fit_seconds": 38.5,
+  "best_iteration": 1585,
+  "refit_rounds": 1761,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000
+}

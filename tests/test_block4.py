@@ -110,6 +110,21 @@ def test_psi_zero_for_identical_and_large_for_shift():
     assert psi(a, a + 1.0) > 0.25
 
 
+def test_holm_adjustment():
+    from src.analysis.block4_ablation import holm
+    assert np.allclose(holm([0.01, 0.04, 0.03]), [0.03, 0.06, 0.06])
+
+
+def test_ablation_arms_drop_whole_groups():
+    from src.analysis.block4_ablation import arms
+    from src.features.block2 import FEATURE_GROUPS
+    cols = sorted(set().union(*[g for k, g in FEATURE_GROUPS.items() if k != "engineered"]))[:200]
+    spec = arms(cols)
+    assert spec["full"] == ([], True) and spec["drop_engineered"] == ([], False)
+    assert set(spec["drop_lc_grade_and_int_rate"][0]) == {"grade", "sub_grade", "int_rate"}
+    assert set(spec["drop_affordability"][0]) == FEATURE_GROUPS["affordability"] & set(cols)
+
+
 @pytest.mark.skipif(block4.LOCK.exists(), reason="Test read-out already locked")
 def test_test_predictions_blocked_before_lock():
     with pytest.raises(RuntimeError):

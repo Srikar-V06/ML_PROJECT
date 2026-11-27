@@ -1,0 +1,27 @@
+{
+  "arm": "drop_lc_grade",
+  "dropped": [
+    "grade",
+    "sub_grade"
+  ],
+  "engineered_ratios": [
+    "loan_to_income",
+    "payment_to_income",
+    "revolving_to_income",
+    "open_account_share"
+  ],
+  "n_raw_inputs": 48,
+  "n_model_inputs": 95,
+  "n_flags": 24,
+  "val_roc_auc": 0.7514241276290811,
+  "val_pr_auc": 0.43937208401916433,
+  "val_brier": 0.13987753532718106,
+  "val_ks": 0.36857451824511117,
+  "fit_seconds": 35.6,
+  "best_iteration": 1705,
+  "refit_rounds": 1894,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000
+}

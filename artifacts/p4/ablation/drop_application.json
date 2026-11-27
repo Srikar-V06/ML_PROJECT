@@ -1,0 +1,29 @@
+{
+  "arm": "drop_application",
+  "dropped": [
+    "emp_length",
+    "home_ownership",
+    "purpose",
+    "verification_status"
+  ],
+  "engineered_ratios": [
+    "loan_to_income",
+    "payment_to_income",
+    "revolving_to_income",
+    "open_account_share"
+  ],
+  "n_raw_inputs": 46,
+  "n_model_inputs": 113,
+  "n_flags": 23,
+  "val_roc_auc": 0.7496247637973733,
+  "val_pr_auc": 0.4385070110174651,
+  "val_brier": 0.14000995554103313,
+  "val_ks": 0.36528844848178615,
+  "fit_seconds": 41.9,
+  "best_iteration": 1843,
+  "refit_rounds": 2048,
+  "tail_fraction": 0.1,
+  "fit_rows": 210000,
+  "probe_fit_rows": 189000,
+  "probe_tail_rows": 21000
+}

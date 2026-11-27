@@ -163,7 +163,7 @@ def calibration_final(cfg):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config/base.yaml")
-    parser.add_argument("--stage", choices=["calibration", "shap", "temporal", "sensitivity"],
+    parser.add_argument("--stage", choices=["calibration", "shap", "temporal", "sensitivity", "ablation"],
                         default="calibration")
     parser.add_argument("--models", nargs="*", default=None)
     parser.add_argument("--sample", type=int, default=5000, help="Validation rows for SHAP")
@@ -202,6 +202,13 @@ def main():
         print(table.drop_duplicates("month")[["month", "rows", "base_rate"]].to_string(index=False))
         print(feat.sort_values("psi_observed", ascending=False).head(10).round(4).to_string(index=False))
         print(scores.round(4).to_string(index=False))
+    elif args.stage == "ablation":  # --models selects arms (e.g. drop_lc_grade); `full` always runs first
+        from src.analysis.block4_ablation import run as run_ablation
+        table, gap = run_ablation(cfg, only=args.models)
+        print(f"full arm reproduces P3 xgb_hist Validation predictions: max |diff| = {gap:.2e}")
+        cols = [c for c in ["arm", "n_raw_inputs", "n_model_inputs", "refit_rounds", "val_roc_auc", "val_pr_auc",
+                            "d_roc_auc", "d_roc_auc_p_holm", "d_pr_auc", "d_pr_auc_p_holm"] if c in table]
+        print(table[cols].to_string(index=False, float_format=lambda v: f"{v:.4g}"))
     elif args.stage == "sensitivity":
         from src.analysis import block4_sensitivity as sens
         t = sens.sensitivity(cfg)
