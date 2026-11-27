@@ -73,6 +73,43 @@ def test_shap_field_mapping_and_additive_aggregation():
     assert agg.loc[0, "grade"] == 3.0 and np.allclose(agg.sum(axis=1), values.sum(axis=1))
 
 
+def _frame(n=2_000, seed=0):
+    import pandas as pd
+    rng = np.random.default_rng(seed)
+    loan, term, rate = rng.uniform(1e3, 3e4, n), rng.choice([36.0, 60.0], n), rng.uniform(5, 25, n)
+    from src.analysis.block4_sensitivity import amortized_installment
+    return pd.DataFrame(dict(loan_amnt=loan, term=term, int_rate=rate,
+                             installment=amortized_installment(loan, term, rate), grade=rng.choice(list("ABC"), n)))
+
+
+def test_rate_shock_reprices_installment_consistently():
+    from src.analysis.block4_sensitivity import amortized_installment, rate_shock
+    X = _frame()
+    assert amortized_installment(10_000, 36, 10.99) == pytest.approx(327.34, abs=0.01)  # real LC loan
+    shocked = rate_shock(X, 2.0)
+    assert np.allclose(shocked.int_rate, X.int_rate + 2) and (shocked.installment > X.installment).all()
+    assert np.allclose(rate_shock(X, 2.0, reprice=False).installment, X.installment)
+
+
+def test_noise_skips_discrete_fields_and_stays_in_support():
+    from src.analysis.block4_sensitivity import gaussian_noise, inject_missing
+    X = _frame()
+    noisy = gaussian_noise(X, 0.25, np.random.default_rng(1))
+    assert noisy.term.equals(X.term) and noisy.grade.equals(X.grade)  # two-level / categorical untouched
+    assert not np.allclose(noisy.int_rate, X.int_rate)
+    assert noisy.int_rate.between(X.int_rate.min(), X.int_rate.max()).all()
+    holes = inject_missing(X, 0.2, np.random.default_rng(1))
+    assert 0.15 < holes.loan_amnt.isna().mean() < 0.25 and holes.grade.notna().all()
+
+
+def test_psi_zero_for_identical_and_large_for_shift():
+    from src.analysis.block4_sensitivity import psi
+    rng = np.random.default_rng(0)
+    a = rng.normal(0, 1, 10_000)
+    assert psi(a, a) == pytest.approx(0.0, abs=1e-9)
+    assert psi(a, a + 1.0) > 0.25
+
+
 @pytest.mark.skipif(block4.LOCK.exists(), reason="Test read-out already locked")
 def test_test_predictions_blocked_before_lock():
     with pytest.raises(RuntimeError):

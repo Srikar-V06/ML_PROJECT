@@ -163,7 +163,8 @@ def calibration_final(cfg):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config/base.yaml")
-    parser.add_argument("--stage", choices=["calibration", "shap"], default="calibration")
+    parser.add_argument("--stage", choices=["calibration", "shap", "temporal", "sensitivity"],
+                        default="calibration")
     parser.add_argument("--models", nargs="*", default=None)
     parser.add_argument("--sample", type=int, default=5000, help="Validation rows for SHAP")
     parser.add_argument("--final", action="store_true", help="one-shot Test read-out (writes the lock)")
@@ -187,6 +188,26 @@ def main():
         print(imp.rank(ascending=False).sort_values("stack_lr").head(12).astype(int).to_string())
         print(rho.round(3).to_string())
         print(pd.DataFrame(mono).pivot(index="field", columns="model", values="spearman_value_vs_shap").round(3))
+    elif args.stage == "temporal":
+        from src.analysis import block4_sensitivity as sens
+        split = "val"
+        if args.final:  # Test months from P3's existing Test predictions; only after the calibration lock
+            if not LOCK.exists():
+                raise RuntimeError("Run `--stage calibration --final` first; Test is read only after the lock")
+            split = "test"
+        table = sens.temporal(cfg, split)
+        feat, scores = sens.drift(cfg, split)
+        print(table.pivot(index="month", columns="model", values="roc_auc").round(4).to_string())
+        print(table.pivot(index="month", columns="model", values="ece").round(4).to_string())
+        print(table.drop_duplicates("month")[["month", "rows", "base_rate"]].to_string(index=False))
+        print(feat.sort_values("psi_observed", ascending=False).head(10).round(4).to_string(index=False))
+        print(scores.round(4).to_string(index=False))
+    elif args.stage == "sensitivity":
+        from src.analysis import block4_sensitivity as sens
+        t = sens.sensitivity(cfg)
+        print(t.pivot_table(index=["scenario", "level"], columns="model", values="d_roc_auc").round(4).to_string())
+        print(t.pivot_table(index=["scenario", "level"], columns="model", values="approval_rate_10").round(3)
+              .to_string())
 
 
 if __name__ == "__main__":
