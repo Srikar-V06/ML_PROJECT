@@ -1,0 +1,177 @@
+{
+  "locked_at": "2026-11-27T13:25:05.329201+00:00",
+  "git_sha": "a8d65325ad85b118465ff94851a4977c5b4ec9e4",
+  "selection_rule": "Lowest 5-fold cross-fitted Validation Brier among raw/platt/isotonic (ties -> simpler method)",
+  "selected_methods": {
+    "stack_lr": "platt",
+    "catboost": "platt",
+    "xgb_hist": "platt",
+    "lgbm_native_flags": "platt",
+    "adaboost": "isotonic",
+    "catboost_imb_class_weights": "platt"
+  },
+  "thresholds": {
+    "stack_lr": {
+      "raw_tuned": {
+        "5.0": 0.18114781079745088,
+        "10.0": 0.10172492642138573,
+        "15.0": 0.06849413411759456
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1750466197281469,
+        "10.0": 0.083775102087769,
+        "15.0": 0.0625816059747987
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1790315415370946,
+        "10.0": 0.0826180257510729,
+        "15.0": 0.0653120464441219
+      }
+    },
+    "catboost": {
+      "raw_tuned": {
+        "5.0": 0.15452909412645047,
+        "10.0": 0.08740026725471077,
+        "15.0": 0.0642106556737374
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1654615330416812,
+        "10.0": 0.0879474380517815,
+        "15.0": 0.0625071986616474
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1560283687943262,
+        "10.0": 0.0923076923076923,
+        "15.0": 0.0618556701030927
+      }
+    },
+    "xgb_hist": {
+      "raw_tuned": {
+        "5.0": 0.1493944525718689,
+        "10.0": 0.09577550739049911,
+        "15.0": 0.05968865379691124
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1612620470612706,
+        "10.0": 0.0887961812270081,
+        "15.0": 0.0572215566287966
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1611374407582938,
+        "10.0": 0.0904198062432723,
+        "15.0": 0.0585267406659939
+      }
+    },
+    "lgbm_native_flags": {
+      "raw_tuned": {
+        "5.0": 0.15813521007978545,
+        "10.0": 0.08620108787266761,
+        "15.0": 0.055864906551417605
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1731852173587694,
+        "10.0": 0.0887501257254789,
+        "15.0": 0.0537886838504366
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1683673469387755,
+        "10.0": 0.0894941634241245,
+        "15.0": 0.0524193548387096
+      }
+    },
+    "adaboost": {
+      "raw_tuned": {
+        "5.0": 0.30290548023509195,
+        "10.0": 0.2475461759014025,
+        "15.0": 0.21188709643910925
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1687977274176168,
+        "10.0": 0.0883634846131589,
+        "15.0": 0.0563142378694007
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1931745009658725,
+        "10.0": 0.0852359208523592,
+        "15.0": 0.0543478260869565
+      }
+    },
+    "catboost_imb_class_weights": {
+      "raw_tuned": {
+        "5.0": 0.45859832114849775,
+        "10.0": 0.31213631615429493,
+        "15.0": 0.2536314672015024
+      },
+      "bayes": {
+        "5.0": 0.16666666666666666,
+        "10.0": 0.09090909090909091,
+        "15.0": 0.0625
+      },
+      "platt_tuned": {
+        "5.0": 0.1697798604144652,
+        "10.0": 0.0892849097478803,
+        "15.0": 0.0675735550284233
+      },
+      "isotonic_tuned": {
+        "5.0": 0.1792555113841705,
+        "10.0": 0.0932069510268562,
+        "15.0": 0.0632440476190476
+      }
+    }
+  },
+  "calibrator_sha256": {
+    "stack_lr_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "stack_lr_platt": "11199652e159e76cd2fbd4fef212dea046be2d43fdf279ccf718df919107140d",
+    "stack_lr_isotonic": "3069e5d1054ee18f0d4d47936f720ac2b4cd9538613efd355fdf49e10a81c4a8",
+    "catboost_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "catboost_platt": "c4519b9d72f4ce3575c133a7635a624ca9897be877e33f88a49318cb972d07b2",
+    "catboost_isotonic": "a74a4b6ea57675aa8ecddddc2f995cd2538a7ce58ca03a26d98ddcdab9da15a6",
+    "xgb_hist_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "xgb_hist_platt": "008c0dc2f59dc623816d2b2fc45c81461be24af492adc89f47c1d6a5b22f714f",
+    "xgb_hist_isotonic": "b6f2f485655f8b688675198f450a70844cc6a1424ccd2e340e3a0b567d6c3fe5",
+    "lgbm_native_flags_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "lgbm_native_flags_platt": "a82479311c8a8b1081522a346e2e4306ed23bdad3d0320699988fb240243155b",
+    "lgbm_native_flags_isotonic": "074588d439698dac91b6644fb3b948bb94b36c2478972e3d59c8c2c38f418cf0",
+    "adaboost_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "adaboost_platt": "db95d4e7767cf35d30a0b57f366bfec27811f1eb8a39884bde40f76bb15b27d0",
+    "adaboost_isotonic": "41ab66a67e0866cdc6273848725935db21aed4e12bb7d9fa8ef5e62a607c953e",
+    "catboost_imb_class_weights_raw": "27021a0fbe487fda488d82ce5002cd4e5dd51e8d89e4c644047046ce98178ab0",
+    "catboost_imb_class_weights_platt": "34fa162020da0f53ffc324a97036a6fced4ecf00003cbf9122bf808959c3f95b",
+    "catboost_imb_class_weights_isotonic": "074c88cdc5431f4f1747846b18189352ea9a839f46356acba5a534cf0db90248"
+  },
+  "p3_test_lock_sha256": "4f538d89d85bd384b05bf759f84c0f0ccb1e9277b53794be94fd06cf1dc4cde0",
+  "p3_manifest_sha256": "f40aa9b710fcfecf8cce15f100f50c5609e31fae258f38b2339c89c00e377519",
+  "p3_test_predictions_sha256": {
+    "stack_lr": "d9680a5d768ad76417601691f2f7dff0b6f694cd8a8cd7b98ea79ebf34bcb83a",
+    "catboost": "b06ecbd9f757232ffeeb17a08c9530ce75d53a8557eb04eadd3893caaf89047d",
+    "xgb_hist": "61ab093f52c44cea5ef61bde1dccff644aecbe18f3a8449cd594abfd6ed0ce3c",
+    "lgbm_native_flags": "1238f5d5d693ccd0fc7d5807f3be5386edbc00aefd072ce87ffa22666804fb1f",
+    "adaboost": "dfda9f41f11fb0bdb2f8ab509a6e4605929a08225e63e0c1b0626ba5a2e48da2",
+    "catboost_imb_class_weights": "c56628df8f661a2b63e78db39e512617596cb5b6f0f6b8e49abf248b34f3458c"
+  }
+}
